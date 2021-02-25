@@ -1,5 +1,5 @@
 import { Controller } from 'egg';
-import { Route, HttpGet } from 'egg-decorator-router';
+import { Route, HttpGet, HttpPost } from 'egg-decorator-router';
 import { server } from '../middleware/vite';
 
 @Route()
@@ -27,5 +27,12 @@ export default class HomeController extends Controller {
     const { ctx } = this;
 
     ctx.body = 'api';
+  }
+
+  @HttpPost('/api')
+  public apiPost() {
+    const { ctx } = this;
+
+    ctx.body = ctx.request.body;
   }
 }
