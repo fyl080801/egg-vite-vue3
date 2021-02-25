@@ -13,6 +13,11 @@
       </strong>
     </noscript>
     <div id="app"></div>
-    <script type="module" src="{{input}}"></script>
+    {% if ctx.app.config.env !== "local" %}
+    <script></script>
+    {% else %}
+    <script type="module" src="{{server}}/@vite/client"></script>
+    <script type="module" src="{{server}}/client/main.ts"></script>
+    {% endif %}
   </body>
 </html>

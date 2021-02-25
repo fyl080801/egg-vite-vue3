@@ -8,10 +8,11 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-eggv3test",
-    "stop": "egg-scripts stop --title=egg-server-eggv3test",
+    "start": "egg-scripts start --daemon --env=prod --title=egg-vite-vue3",
+    "stop": "egg-scripts stop --title=egg-vite-vue3",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
+    "build": "vite build -c vite.config.ts && tsc",
     "test-local": "egg-bin test",
     "test": "npm run lint -- --fix && npm run test-local",
     "cov": "egg-bin cov",
