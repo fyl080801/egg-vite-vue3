@@ -22,6 +22,7 @@
     "clean": "ets clean"
   },
   "dependencies": {
+    "@json2render/vue-full": "^0.1.10",
     "egg": "^2.6.1",
     "egg-decorator-router": "^1.0.7",
     "egg-scripts": "^2.6.0",

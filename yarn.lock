@@ -242,6 +242,58 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
+"@json2render/core@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@json2render/core/-/core-0.2.3.tgz#69fd9a66f9b5df8e4f12a7b2dfaf4d8d16ff7171"
+  integrity sha512-ZJV9bkuiTzh2vbvVFsAD7djQoTurd7pjFBdztcL0zApRinClqam0LibhVoP1v7CNK5ongZ59e0BZ+Pw9BG+lcA==
+  dependencies:
+    "@json2render/utils" "^0.2.2"
+
+"@json2render/plugin-classics@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@json2render/plugin-classics/-/plugin-classics-0.2.2.tgz#c0bcb7b8135496aa8eadb83da689ad5f40737a26"
+  integrity sha512-hrHrT8+ZbZTY7FK+I0IgU3HsNDUwod0CWBr+gNvW6XFfOJXON2Ii0HtLca2IROltUZvCQ2fzIiWtfN7h37APZQ==
+  dependencies:
+    "@json2render/core" "^0.2.3"
+    "@json2render/utils" "^0.2.2"
+
+"@json2render/plugin-modern@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@json2render/plugin-modern/-/plugin-modern-0.2.2.tgz#c4d1aa7d076d6381c33ae5dd5f3f707b1122784e"
+  integrity sha512-3ffYBjurplftv+3H6zd7CFo6revLU5uWSFLh0eJ9vaXva+Oj8vKQvocyYVEwqWXrko9hifFyGg2gIPa3NU+l5A==
+  dependencies:
+    "@json2render/utils" "^0.2.2"
+
+"@json2render/plugin-vue@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@json2render/plugin-vue/-/plugin-vue-0.1.5.tgz#24faeed8c1ac210871088b676618731b200e75a9"
+  integrity sha512-fU80AqvctZ3cYnlZcLL3wRShzbB35SXa2F9QfAyoq9SgA5Y0/k63FPGKd9/fCjvxPrfiOyRNCe62WcYQSEU8HA==
+  dependencies:
+    "@json2render/utils" "^0.2.2"
+
+"@json2render/utils@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@json2render/utils/-/utils-0.2.2.tgz#632ad5cb4beb080f94ca9cfcb102172ee85deb3c"
+  integrity sha512-CQn0jmwYOFqwxXZnEfifpoNc9JvnywRCttK9wDyBXXlnYN479ld5TE5FbiqDMVkUVb0RPYdIZGkU84m78AN7/A==
+
+"@json2render/vue-full@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@json2render/vue-full/-/vue-full-0.1.10.tgz#b09607f2599839e36f57655883970968e1a0d4cd"
+  integrity sha512-nuVlRqoCxFE8Z5Dw75kk3Wfbihu5hnQnw1ok5X5BSTV+zs1k0iLcOq7OAWKkeNf6FU9CPTflPRp6D4HZCx8Eig==
+  dependencies:
+    "@json2render/plugin-classics" "^0.2.2"
+    "@json2render/plugin-modern" "^0.2.2"
+    "@json2render/plugin-vue" "^0.1.5"
+    "@json2render/vue" "^0.3.3"
+
+"@json2render/vue@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@json2render/vue/-/vue-0.3.3.tgz#3b80325f8cdbb0a0a0ae0240f4dd386e8f22cc86"
+  integrity sha512-7Vvxf73vOgMx+Fp8TTwMNGwcLw7F0FBHq+MgVA2zTqLW8ltFoR9S32pPbLjZjxYGKFF/14V0eGjf+jl38cf2AA==
+  dependencies:
+    "@json2render/core" "^0.2.3"
+    "@json2render/utils" "^0.2.2"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

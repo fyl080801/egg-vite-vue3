@@ -1,33 +1,59 @@
-# hackernews-async-ts
+# Eggjs + Vite + Vue3
 
-[Hacker News](https://news.ycombinator.com/) showcase using typescript && egg
+使用 `Eggjs` `Vite` `Vue3` 搭建的示例项目
 
-## QuickStart
-
-### Development
+## 快速上手
 
 ```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
+yarn install
 ```
 
-Don't tsc compile at development mode, if you had run `tsc` then you need to `npm run clean` before `npm run dev`.
-
-### Deploy
-
-```bash
-$ npm run tsc
-$ npm start
+```base
+yarn run dev
 ```
 
-### Npm Scripts
+## 项目说明
 
-- Use `npm run lint` to check code style
-- Use `npm test` to run unit test
-- se `npm run clean` to clean compiled js at development mode once
+通过 egg 作为入口服务，经过中间件启动 vite 服务，视图中输出 vite 服务入口模块
 
-### Requirement
+### 目录结构
 
-- Node.js 8.x
-- Typescript 2.8+
+```text
+root
+├─ app              # 服务端目录
+│  ├─ controller
+│  │  └─ home.ts
+│  ├─ middleware
+│  │  └─ vite.ts
+│  ├─ public
+│  ├─ service
+│  │  └─ Test.ts
+│  └─ view
+│     └─ index.html
+├─ client           # 前端目录
+│  ├─ components
+│  │  ├─ DynamicView.vue
+│  │  └─ Hello.vue
+│  ├─ App.vue
+│  └─ main.ts
+├─ config           # 相关配置
+│  ├─ config.default.ts
+│  ├─ config.local.ts
+│  ├─ config.prod.ts
+│  └─ plugin.ts
+├─ README.md
+├─ appveyor.yml
+├─ package.json
+├─ tsconfig.json
+└─ yarn.lock
+```
+
+### 界面说明
+
+通过修改 `config/config.local.ts` 中 vite 配置更新前端界面相关功能
+
+## 其他
+
+项目集成 [egg-decorator-router](https://github.com/fyl080801/egg-decorator-router)、[json-to-render](https://github.com/fyl080801/json-to-render)
+
+> 目前只支持开发调试，还不支持运行

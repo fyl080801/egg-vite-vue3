@@ -2,4 +2,6 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import 'vite/dynamic-import-polyfill';
 
-createApp(App).mount('#app');
+import JRender from '@json2render/vue-full';
+
+createApp(App).use(JRender).mount('#app');
