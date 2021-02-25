@@ -1,0 +1,64 @@
+{
+  "name": "egg-vite-vue3",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "egg": {
+    "typescript": true,
+    "declarations": true
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-eggv3test",
+    "stop": "egg-scripts stop --title=egg-server-eggv3test",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test-local": "egg-bin test",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "cov": "egg-bin cov",
+    "tsc": "ets && tsc -p tsconfig.json",
+    "ci": "npm run lint && npm run cov && npm run tsc",
+    "autod": "autod",
+    "lint": "eslint . --ext .ts",
+    "clean": "ets clean"
+  },
+  "dependencies": {
+    "egg": "^2.6.1",
+    "egg-decorator-router": "^1.0.7",
+    "egg-scripts": "^2.6.0",
+    "egg-view-nunjucks": "^2.3.0",
+    "vue": "^3.0.6"
+  },
+  "devDependencies": {
+    "@types/egg": "^1.5.0",
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^14.14.31",
+    "@types/supertest": "^2.0.0",
+    "@vitejs/plugin-vue": "^1.1.4",
+    "@vue/compiler-sfc": "^3.0.6",
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "egg-bin": "^4.11.0",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^4.0.1",
+    "eslint": "^7.20.0",
+    "eslint-config-egg": "^9.0.0",
+    "tslib": "^2.1.0",
+    "typescript": "^4.2.2",
+    "vite": "^2.0.3"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "eslintIgnore": [
+    "coverage"
+  ],
+  "author": "",
+  "license": "MIT"
+}
