@@ -6,17 +6,20 @@ import { server } from '../middleware/vite';
 export default class HomeController extends Controller {
   @HttpGet('/')
   public async index() {
+    const { ctx, config } = this;
     const renderData: any = {};
 
-    if (this.config.env === 'local') {
+    if (config.env === 'local') {
       const addressInfo: any = server?.httpServer?.address();
 
-      renderData.server = `${this.ctx.protocol}://${
+      renderData.server = `${ctx.protocol}://${
         addressInfo?.address === '::' ? 'localhost' : addressInfo?.address
       }:${addressInfo?.port}`;
+
+      renderData.input = `${renderData.server}${config.vite.build.rollupOptions.input}`;
     }
 
-    await this.ctx.render('index.html', renderData);
+    await ctx.render('index.html', renderData);
   }
 
   @HttpGet('/api')
@@ -26,5 +29,3 @@ export default class HomeController extends Controller {
     ctx.body = 'api';
   }
 }
-
-// new Controller()
