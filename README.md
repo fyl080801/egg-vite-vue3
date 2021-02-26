@@ -4,12 +4,40 @@
 
 ## 快速上手
 
+### 启动调试
+
 ```bash
 yarn install
 ```
 
 ```base
 yarn run dev
+```
+
+### 线上运行
+
+安装依赖
+
+```bash
+yarn install
+```
+
+发布
+
+```bash
+yarn run deploy
+```
+
+启动
+
+```bash
+yarn run start
+```
+
+停止
+
+```bash
+yarn run stop
 ```
 
 ## 项目说明
@@ -54,6 +82,4 @@ root
 
 ## 其他
 
-项目集成 [egg-decorator-router](https://github.com/fyl080801/egg-decorator-router)、[json-to-render](https://github.com/fyl080801/json-to-render)
-
-> 目前只支持开发调试，还不支持运行
+项目集成 [egg-decorator-router](https://github.com/fyl080801/egg-decorator-router)、[tailwindcss](https://tailwindcss.com/)、[json-to-render](https://github.com/fyl080801/json-to-render)
