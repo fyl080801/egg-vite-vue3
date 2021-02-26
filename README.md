@@ -82,4 +82,4 @@ root
 
 ## 其他
 
-项目集成 [egg-decorator-router](https://github.com/fyl080801/egg-decorator-router)、[tailwindcss](https://tailwindcss.com/)、[json-to-render](https://github.com/fyl080801/json-to-render)
+项目集成 [egg-decorator-router](https://github.com/fyl080801/egg-decorator-router)、[tailwindcss](https://tailwindcss.com/)、[json-to-render](https://github.com/fyl080801/json-to-render)、element-plus
