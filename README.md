@@ -1,5 +1,7 @@
 # Eggjs + Vite + Vue3
 
+[![Build Status](https://travis-ci.com/fyl080801/egg-vite-vue3.svg?branch=master)](https://travis-ci.com/fyl080801/egg-vite-vue3)
+
 使用 `Eggjs` `Vite` `Vue3` 搭建的示例项目
 
 ## 快速上手
