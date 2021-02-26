@@ -1,4 +1,10 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["app/public", "app/views", "node_modules*", "src"]
+  "exclude": [
+    "app/public",
+    "app/views",
+    "node_modules*",
+    "src",
+    "vite.config.ts"
+  ]
 }

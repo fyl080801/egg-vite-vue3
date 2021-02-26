@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     manifest: true,
     rollupOptions: {
-      input: '/client/main.ts',
+      input: '/src/main.ts',
       output: {
         dir: 'app/public/dist',
       },
