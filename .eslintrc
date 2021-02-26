@@ -6,6 +6,7 @@
   "rules": {
     "array-bracket-spacing": "off",
     "space-before-function-paren": "off",
+    "newline-per-chained-call": "off",
     "arrow-parens": "off",
     "comma-dangle": "off"
   }

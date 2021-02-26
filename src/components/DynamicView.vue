@@ -30,16 +30,40 @@ const config = reactive({
   },
   fields: [
     {
-      component: 'form',
+      component: 'h1',
+      text: '表单提交',
+      props: {
+        style: { fontSize: '24px', textAlign: 'center', margin: '20px 0' },
+      },
+    },
+    {
+      component: 'el-form',
+      rowProps: {
+        gutter: 20,
+      },
+      props: {
+        labelWidth: '120px',
+      },
       children: [
-        { component: 'h2', text: '表单提交' },
-        { component: 'input', value: 'model.text' },
-        { component: 'p', text: '#: Hello ${model.text} !!' },
+        {
+          component: 'el-input',
+          model: 'model.text',
+          colProps: { span: 12 },
+          formProps: { label: '输入1' },
+        },
+        {
+          component: 'p',
+          colProps: { span: 24 },
+          formProps: {},
+          text: '#: Hello ${model.text} !!',
+        },
         { component: 'input', value: 'model.submitText' },
         {
-          component: 'button',
+          component: 'el-button',
           text: '提交',
-          props: { type: 'button', onClick: '@:submitdata.request()' },
+          colProps: { span: 24 },
+          formProps: {},
+          props: { onClick: '@:submitdata.request()' },
         },
       ],
     },
