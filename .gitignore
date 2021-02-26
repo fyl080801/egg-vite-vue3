@@ -10,8 +10,10 @@ logs/
 *.swp
 *.lock
 *.js
+package-lock.json
 !.autod.conf.js
 !yarn.lock
+!*.config.js
 
 app/**/*.js
 test/**/*.js
@@ -20,4 +22,4 @@ app/**/*.map
 test/**/*.map
 config/**/*.map
 dist
-/output
+output

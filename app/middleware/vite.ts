@@ -1,5 +1,3 @@
-// import {} from 'egg';
-
 import { EggMiddlewareFactory } from 'egg';
 import { createServer, ViteDevServer } from 'vite';
 import { resolve } from 'path';
@@ -7,7 +5,7 @@ import { resolve } from 'path';
 export let server: ViteDevServer;
 
 const middleware: EggMiddlewareFactory = (options: any) => {
-  return async (_ctx, next) => {
+  return async (ctx, next) => {
     if (!server) {
       const configFile = options?.configFile || 'vite.config.ts';
       const config = await import(resolve(process.cwd(), configFile));
@@ -21,7 +19,8 @@ const middleware: EggMiddlewareFactory = (options: any) => {
 
       await server.listen();
 
-      _ctx.app.on('beforeClose', () => {
+      // 可能不需要
+      ctx.app.on('beforeClose', () => {
         server?.close();
       });
     }

@@ -7,9 +7,14 @@
     "typescript": true,
     "declarations": true
   },
+  "eggScriptsConfig": {
+    "daemon": true,
+    "env": "prod",
+    "title": "egg-vite-vue3"
+  },
   "scripts": {
-    "start": "egg-scripts start --daemon --env=prod --title=egg-vite-vue3",
-    "stop": "egg-scripts stop --title=egg-vite-vue3",
+    "start": "egg-scripts start ./output",
+    "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "build": "vite build -c vite.config.ts && npm run tsc",
@@ -20,7 +25,8 @@
     "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
     "lint": "eslint . --ext .ts",
-    "clean": "ets clean"
+    "clean": "ets clean",
+    "deploy": "sh ./scripts/build.sh"
   },
   "dependencies": {
     "@json2render/vue-full": "^0.1.10",
@@ -39,11 +45,16 @@
     "@vue/compiler-sfc": "^3.0.6",
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
+    "autoprefixer": "^10.2.4",
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.8.0",
     "egg-mock": "^4.0.1",
     "eslint": "^7.20.0",
     "eslint-config-egg": "^9.0.0",
+    "mkdirp": "^1.0.4",
+    "mocha": "5.2.0",
+    "postcss": "^8.2.6",
+    "tailwindcss": "^2.0.3",
     "tslib": "^2.1.0",
     "typescript": "^4.2.2",
     "vite": "^2.0.3"

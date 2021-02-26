@@ -14,10 +14,19 @@
     </noscript>
     <div id="app"></div>
     {% if ctx.app.config.env !== "local" %}
-    <script></script>
+
+    <!-- manifest -->
+    {% for item in manifest %}
+    <script type="module" src="{{item.src}}"></script>
+    {% if item.css %}
+    <link rel="stylesheet" href="{{item.css}}"></link>
+    {% endif %}
+    {% endfor %}
+    <!-- manifest -->
+
     {% else %}
-    <script type="module" src="{{server}}/@vite/client"></script>
-    <script type="module" src="{{server}}/src/main.ts"></script>
+    <script type="module" src="{{domain}}/@vite/client"></script>
+    <script type="module" src="{{domain}}/src/main.ts"></script>
     {% endif %}
   </body>
 </html>

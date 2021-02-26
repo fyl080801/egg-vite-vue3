@@ -6,24 +6,38 @@ import { server } from '../middleware/vite';
 export default class HomeController extends Controller {
   @HttpGet('/')
   public async index() {
-    try {
-      const { ctx, config } = this;
-      const renderData: any = {};
+    const { ctx, config } = this;
+    const renderData: any = {};
 
-      if (config.env === 'local') {
-        const addressInfo: any = server?.httpServer?.address();
+    if (config.env !== 'local') {
+      const manifestRequest = await ctx.curl(
+        `${ctx.URL.hostname}:${ctx.URL.port}/public/manifest.json`
+      );
 
-        renderData.server = `${ctx.protocol}://${
-          addressInfo?.address === '::' ? 'localhost' : addressInfo?.address
-        }:${addressInfo?.port}`;
-
-        // renderData.input = `${renderData.server}${config.vite.build.rollupOptions.input}`;
+      if (manifestRequest.status !== 200) {
+        ctx.throw('load manifest faild');
+        return;
       }
 
-      await ctx.render('index.html', renderData);
-    } catch (e) {
-      this.ctx.throw(e.message);
+      const manifest = JSON.parse(manifestRequest.data.toString());
+
+      const entryList = Object.keys(manifest)
+        .filter((key) => manifest[key].isEntry)
+        .map((key) => manifest[key]);
+
+      renderData.manifest = entryList.map((e) => ({
+        src: `public/${e.file}`,
+        css: `public/${e.css}`,
+      }));
+    } else {
+      const addressInfo: any = server?.httpServer?.address();
+
+      renderData.domain = `${ctx.protocol}://${
+        addressInfo?.address === '::' ? 'localhost' : addressInfo?.address
+      }:${addressInfo?.port}`;
     }
+
+    await ctx.render('index.html', renderData);
   }
 
   @HttpGet('/api')
