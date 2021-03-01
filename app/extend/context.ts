@@ -15,18 +15,21 @@ class ViteContext {
   public async render(name, data?) {
     if (this.viteServer) {
       const address = this.getServerAddress();
-      const result = await this.ctx.curl(
-        `${this.ctx.protocol}://${address}/${name}`
-      );
-      const html = result.data.toString();
+      const html = (
+        await this.ctx.curl(`${this.ctx.protocol}://${address}/${name}`)
+      ).data.toString();
 
       const $ = cheerio.load(html, {});
 
       $('script').each((_idx, elm) => {
         const child = $(elm);
         const src = child.attr('src');
-        if (src && !src?.startsWith('http:') && !src?.startsWith('https:')) {
-          // console.log(`${this.ctx.protocol}://${path.join(address, src)}`);
+        if (
+          src &&
+          !src.startsWith('http:') &&
+          !src.startsWith('https:') &&
+          !src.startsWith('//')
+        ) {
           child.attr('src', `//${path.join(address, src)}`);
         }
       });

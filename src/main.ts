@@ -1,4 +1,3 @@
-import 'vite/dynamic-import-polyfill'; // 后端集成需要
 import { createApp } from 'vue';
 import App from './App.vue';
 import Element from 'element-plus';

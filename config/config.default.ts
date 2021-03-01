@@ -26,7 +26,10 @@ export default (appInfo: EggAppInfo) => {
 
   config.static = {
     prefix: '/assets/',
-    dir: path.join(appInfo.baseDir, 'dist/assets'),
+    dir: [
+      path.join(appInfo.baseDir, 'app/public'),
+      path.join(appInfo.baseDir, 'dist/assets'),
+    ],
   };
 
   config.security = {
