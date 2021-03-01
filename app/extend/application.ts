@@ -1,12 +1,12 @@
 import { ViteDevServer } from 'vite';
 
-let _viteServer: ViteDevServer;
+const SERVER = Symbol('application#vite-server');
 
 export default {
-  get viteServer() {
-    return _viteServer;
+  get viteServer(): ViteDevServer {
+    return this[SERVER];
   },
-  set viteServer(value) {
-    _viteServer = value;
+  set viteServer(value: ViteDevServer) {
+    this[SERVER] = value;
   },
 };

@@ -46,7 +46,7 @@ class ViteContext {
       return address;
     }
 
-    return `${address?.address === '::' ? 'localhost' : address?.address}:${
+    return `${address?.address === '::' ? '0.0.0.0' : address?.address}:${
       address?.port
     }`;
   }
