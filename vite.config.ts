@@ -1,12 +1,10 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import legacy from '@vitejs/plugin-legacy';
 
 export default defineConfig({
   build: {
     manifest: true,
-    rollupOptions: {
-      input: '/src/main.ts',
-    },
   },
-  plugins: [vue()],
+  plugins: [vue(), legacy({ targets: ['defaults', 'not IE 11'] })],
 });
