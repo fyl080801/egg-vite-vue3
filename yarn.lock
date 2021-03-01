@@ -3302,8 +3302,8 @@ egg-session@^3.1.0:
 
 egg-static@^2.2.0:
   version "2.2.0"
-  resolved "https://registry.yarnpkg.com/egg-static/-/egg-static-2.2.0.tgz#cc707295637191d09a6c7e070cbeb2f6510c6a47"
-  integrity sha512-9Qzllp78ILUfnsnNIQD74xBzsmp5dF/iLMv/qKGPXRK8YefjzCn0UzKDhjSuw7BOH3or3VmEgI4U5zThPnuNUQ==
+  resolved "https://registry.npm.taobao.org/egg-static/download/egg-static-2.2.0.tgz#cc707295637191d09a6c7e070cbeb2f6510c6a47"
+  integrity sha1-zHBylWNxkdCabH4HDL6y9lEMakc=
   dependencies:
     is-type-of "^1.2.1"
     koa-compose "^4.1.0"
@@ -3338,20 +3338,6 @@ egg-utils@^2.4.1:
   dependencies:
     mkdirp "^0.5.1"
     utility "^1.13.1"
-
-egg-view-assets@^1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/egg-view-assets/-/egg-view-assets-1.6.1.tgz#14d11be3cb9c6fa84d567f9ceb053d53adf2c132"
-  integrity sha512-iIdNDeDIbwZHS1OoCLEtisvcn6zu7JVlKZibDqHAQhZuPwBVZg1NQPArbcRt5hTame6LV/IrPJuPRmOz5lkvHw==
-  dependencies:
-    await-event "^2.1.0"
-    cross-spawn "^6.0.5"
-    debug "^4.1.1"
-    detect-port "^1.3.0"
-    is-type-of "^1.2.1"
-    mz "^2.7.0"
-    mz-modules "^2.1.0"
-    sdk-base "^3.5.1"
 
 egg-view-nunjucks@^2.3.0:
   version "2.3.0"

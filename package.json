@@ -33,7 +33,6 @@
     "egg": "^2.6.1",
     "egg-decorator-router": "^1.0.7",
     "egg-scripts": "^2.6.0",
-    "egg-view-assets": "^1.6.1",
     "egg-view-nunjucks": "^2.3.0",
     "element-plus": "^1.0.2-beta.32",
     "vue": "^3.0.6"

@@ -6,10 +6,6 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-view-nunjucks',
   },
-  assets: {
-    enable: false,
-    package: 'egg-view-assets',
-  },
   decoratorRouter: {
     enable: true,
     package: 'egg-decorator-router',

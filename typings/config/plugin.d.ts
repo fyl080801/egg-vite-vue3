@@ -32,7 +32,6 @@ declare module 'egg' {
     jsonp?: EggPluginItem;
     view?: EggPluginItem;
     nunjucks?: EggPluginItem;
-    assets?: EggPluginItem;
     decoratorRouter?: EggPluginItem;
   }
 }
