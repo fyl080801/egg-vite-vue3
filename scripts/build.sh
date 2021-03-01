@@ -7,5 +7,4 @@ rm -rf output dist
 npm run build
 
 cp package.json output
-cp -r dist output/app/public
-cp -r app/view output/app/view
+cp -r dist output

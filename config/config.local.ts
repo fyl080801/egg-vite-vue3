@@ -5,7 +5,5 @@ export default () => {
 
   config.middleware = ['vite'];
 
-  config.vite = { configFile: 'vite.config.ts' };
-
   return config;
 };

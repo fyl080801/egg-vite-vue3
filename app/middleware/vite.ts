@@ -1,29 +1,14 @@
-import { EggMiddlewareFactory } from 'egg';
-import { createServer, ViteDevServer } from 'vite';
-import { resolve } from 'path';
+import { Context } from 'egg';
+import { createServer } from 'vite';
 
-export let server: ViteDevServer;
+const middleware = () => {
+  return async (ctx: Context, next) => {
+    const { app }: any = ctx;
 
-const middleware: EggMiddlewareFactory = (options: any) => {
-  return async (ctx, next) => {
-    if (!server) {
-      const configFile = options?.configFile || 'vite.config.ts';
-      const config = await import(resolve(process.cwd(), configFile));
-
-      server = await createServer({
-        ...config.default,
-        configFile: false,
-        root: process.cwd(),
-        //   server: { port: options.server?.port || 8088 },
-      });
-
-      await server.listen();
-
-      // 可能不需要
-      ctx.app.on('beforeClose', () => {
-        server?.close();
-      });
+    if (!app.viteServer) {
+      app.viteServer = await (await createServer({})).listen();
     }
+
     await next();
   };
 };
