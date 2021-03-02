@@ -4,6 +4,7 @@ import { Route, HttpGet, HttpPost } from 'egg-decorator-router';
 @Route()
 export default class HomeController extends Controller {
   @HttpGet('/')
+  @HttpGet('*')
   public async index() {
     const { ctx } = this;
 

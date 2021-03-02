@@ -1,10 +1,13 @@
 <template>
   <div class="container">
-    <DynamicView></DynamicView>
+    <ul class="flex space-x-4">
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/about">About</router-link></li>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts" setup>
-import DynamicView from './components/DynamicView.vue';
 import './App.css';
 </script>
