@@ -6,6 +6,10 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-view-nunjucks',
   },
+  vitePlugin: {
+    enable: true,
+    package: 'egg-vite-plugin',
+  },
   decoratorRouter: {
     enable: true,
     package: 'egg-decorator-router',

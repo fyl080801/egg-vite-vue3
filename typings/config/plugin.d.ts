@@ -15,6 +15,7 @@ import 'egg-static';
 import 'egg-jsonp';
 import 'egg-view';
 import 'egg-view-nunjucks';
+import 'egg-vite-plugin';
 import 'egg-decorator-router';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
@@ -32,6 +33,7 @@ declare module 'egg' {
     jsonp?: EggPluginItem;
     view?: EggPluginItem;
     nunjucks?: EggPluginItem;
+    vitePlugin?: EggPluginItem;
     decoratorRouter?: EggPluginItem;
   }
 }

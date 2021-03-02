@@ -32,7 +32,8 @@
     "egg": "^2.6.1",
     "egg-decorator-router": "^1.0.7",
     "egg-scripts": "^2.6.0",
-    "egg-view-nunjucks": "^2.3.0"
+    "egg-view-nunjucks": "^2.3.0",
+    "egg-vite-plugin": "^1.0.1"
   },
   "devDependencies": {
     "@json2render/vue-full": "^0.1.10",
@@ -50,6 +51,7 @@
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.8.0",
     "egg-mock": "^4.0.1",
+    "element-plus": "^1.0.2-beta.32",
     "eslint": "^7.21.0",
     "eslint-config-egg": "^9.0.0",
     "mkdirp": "^1.0.4",
@@ -59,7 +61,6 @@
     "tslib": "^2.1.0",
     "typescript": "^4.2.2",
     "vite": "^2.0.4",
-    "element-plus": "^1.0.2-beta.32",
     "vue": "^3.0.7",
     "vue-router": "^4.0.4"
   },
