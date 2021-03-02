@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-rm -rf output dist
+rm -rf output dist node_modules
 
-# npm install
+npm install
 npm run build
 
 cp package.json output

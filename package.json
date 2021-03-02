@@ -47,7 +47,6 @@
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
     "autoprefixer": "^10.2.4",
-    "cheerio": "^1.0.0-rc.5",
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.8.0",
     "egg-mock": "^4.0.1",
