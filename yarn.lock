@@ -3032,7 +3032,7 @@ ee-first@1.1.1, ee-first@^1.1.1, ee-first@~1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-egg-bin@^4.11.0:
+egg-bin@^4.15.0:
   version "4.15.0"
   resolved "https://registry.yarnpkg.com/egg-bin/-/egg-bin-4.15.0.tgz#9d1eb3765fdd9c7483427af90d14dc2f51320435"
   integrity sha512-g+u7B1bRZpi1EMYNGN6YZlCWQsntoq05yDRLSxWNL5bC2bj7PLaPiUEnM1kS4qLJz5DJuwMGXzXJKsSvczeGYg==
@@ -3059,7 +3059,7 @@ egg-bin@^4.11.0:
     ts-node "^7"
     ypkgfiles "^1.6.0"
 
-egg-ci@^1.8.0:
+egg-ci@^1.18.0:
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/egg-ci/-/egg-ci-1.18.0.tgz#aaae940daf3ec50ea366de0e8ee63723d6486ff9"
   integrity sha512-WqUG5vuSGsqNlBLD2uYB8rqXlC8J59ct+fuhbJFDZvSpvPQrNGqGOpcchMt/sAnOXLumtLHvlnltxvA9VhOsEA==
@@ -3250,7 +3250,7 @@ egg-schedule@^3.6.0:
     safe-timers "^1.1.0"
     utility "^1.16.3"
 
-egg-scripts@^2.6.0:
+egg-scripts@^2.13.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/egg-scripts/-/egg-scripts-2.13.0.tgz#3e88262e3161e9003cf07e6dbd0074870e65c6cb"
   integrity sha512-oxFjb2V9G5EVIFWPK3EkQoAHV+eMDbBGi1FnOH32MkGP+IRe/Y/Nnj4jbuxzJzpwsLLYvtNEk3FRpokEOC3V3A==
@@ -3366,7 +3366,7 @@ egg-watcher@^3.1.0:
     sdk-base "^3.5.0"
     wt "^1.2.0"
 
-egg@*, egg@^2.6.1:
+egg@*, egg@^2.29.3:
   version "2.29.3"
   resolved "https://registry.yarnpkg.com/egg/-/egg-2.29.3.tgz#cb16066728dda2dcdacb4560263913820f1eabdb"
   integrity sha512-0bf445vcNA69I9X8OmUobUAcuFDmK/OEGLw80Z/YzxvArN89jGBNbsRkyleWseBn8cvGXQ9HZrnt3jzmlGYJPg==
@@ -3418,10 +3418,10 @@ electron-to-chromium@^1.3.47, electron-to-chromium@^1.3.649:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.677.tgz#b5d586b0d1976c97cc7e95262677ac5944199513"
   integrity sha512-Tcmk+oKQgpjcM+KYanlkd76ZtpzalkpUULnlJDP6vjHtR7UU564IM9Qv5DxqHZNBQjzXm6mkn7Y8bw2OoE3FmQ==
 
-element-plus@^1.0.2-beta.32:
-  version "1.0.2-beta.32"
-  resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-1.0.2-beta.32.tgz#228975cfc2255993ef7ccd90238cea9a707f0742"
-  integrity sha512-UzRHAELlnz6aqAi5y4OyNspQvrgspAcK4dxSR3chJXmzXZIvG2tqAwu2Whgte+Cd9fptpFYPIdrfVdznwK7zCA==
+element-plus@^1.0.2-beta.33:
+  version "1.0.2-beta.33"
+  resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-1.0.2-beta.33.tgz#0e924c8872dbc14e916ed5d6452d9799b04d4c60"
+  integrity sha512-CHm+KO/d1rJ8R+0S3Hi0xwHhia5KSGChp/w1M8rWZNDQsjHJv/8CEpGSet8htXzgpl4amIFEOb7+uKP38Hu2Xw==
   dependencies:
     "@popperjs/core" "^2.4.4"
     async-validator "^3.4.0"
@@ -8290,6 +8290,18 @@ vite@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.0.4.tgz#063532a4139b59a067297d8ebb5960d450907a09"
   integrity sha512-+PP89D7AKXFE4gps8c5+4eP5yXTh5qCogjdYX7iSsIxbLZAa26JoGSq6OLk0qdb/fqDh7gtJqGiLbG2V6NvkKQ==
+  dependencies:
+    esbuild "^0.8.52"
+    postcss "^8.2.1"
+    resolve "^1.19.0"
+    rollup "^2.38.5"
+  optionalDependencies:
+    fsevents "~2.3.1"
+
+vite@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.0.5.tgz#ac46857a3fa8686d077921e61bd48a986931df1d"
+  integrity sha512-QTgEDbq1WsTtr6j+++ewjhBFEk6c8v0xz4fb/OWJQKNYU8ZZtphOshwOqAlnarSstPBtWCBR0tsugXx6ajfoUg==
   dependencies:
     esbuild "^0.8.52"
     postcss "^8.2.1"
