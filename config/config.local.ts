@@ -5,6 +5,7 @@ export default () => {
 
   config.vitePlugin = {
     devServer: true,
+    targets: [/^(\/node_modules)/g],
   };
 
   return config;

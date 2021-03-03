@@ -57,7 +57,16 @@ const config = reactive({
           formProps: {},
           text: '#: Hello ${model.text} !!',
         },
-        { component: 'input', value: 'model.submitText' },
+        {
+          component: 'el-select',
+          model: 'model.selected',
+          colProps: { span: 12 },
+          formProps: { label: '选择' },
+          children: [
+            { component: 'el-option', props: { label: 'select1', value: 1 } },
+            { component: 'el-option', props: { label: 'select2', value: 2 } },
+          ],
+        },
         {
           component: 'el-button',
           text: '提交',

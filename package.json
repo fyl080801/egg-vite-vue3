@@ -33,7 +33,7 @@
     "egg-decorator-router": "^1.0.7",
     "egg-scripts": "^2.13.0",
     "egg-view-nunjucks": "^2.3.0",
-    "egg-vite-plugin": "^1.0.1"
+    "egg-vite-plugin": "^1.1.4"
   },
   "devDependencies": {
     "@json2render/vue-full": "^0.1.10",
