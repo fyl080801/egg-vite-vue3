@@ -18,7 +18,6 @@ export default class HomeController extends Controller {
   @HttpGet('/api')
   public api() {
     const { ctx } = this;
-
     ctx.body = 'api';
   }
 
