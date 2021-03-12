@@ -7,7 +7,8 @@ export default (app: Application) => {
     'User',
     {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      name: STRING(30),
+      name: STRING(40),
+      address: { type: STRING(200), allowNull: true },
     },
     {
       tableName: 'User',
