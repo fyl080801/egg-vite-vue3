@@ -15,7 +15,7 @@ const plugin: EggPlugin = {
     package: 'egg-decorator-router',
   },
   sequelize: {
-    enable: true,
+    enable: false,
     package: 'egg-sequelize',
   },
 };
