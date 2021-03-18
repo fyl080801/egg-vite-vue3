@@ -1,4 +1,5 @@
 import { Application } from 'egg';
+// import plugin1 from 'plugin1';
 // import { Sequelize, STRING, INTEGER } from 'sequelize';
 
 const startup = async (app: Application) => {
@@ -25,4 +26,5 @@ const startup = async (app: Application) => {
 
 export default (app: Application) => {
   startup(app);
+  // plugin1(app);
 };

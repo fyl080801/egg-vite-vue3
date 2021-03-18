@@ -1,0 +1,28 @@
+{
+  "name": "plugin1",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "fengyuanliang3 <fengyuanliang2@jd.com>",
+  "homepage": "https://github.com/fyl080801/egg-vite-vue3#readme",
+  "license": "ISC",
+  "main": "lib/index.ts",
+  "eggPlugin": {
+    "name": "plugin1"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyl080801/egg-vite-vue3.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/fyl080801/egg-vite-vue3/issues"
+  }
+}

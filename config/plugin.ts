@@ -18,6 +18,14 @@ const plugin: EggPlugin = {
     enable: false,
     package: 'egg-sequelize',
   },
+  plugin1: {
+    enable: true,
+    package: 'plugin1',
+  },
+  plugin2: {
+    enable: true,
+    package: 'plugin2',
+  },
 };
 
 export default plugin;
