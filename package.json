@@ -42,6 +42,7 @@
     "umzug": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/standalone": "7.13.9",
     "@json2render/vue-full": "^0.1.10",
     "@types/egg": "^1.5.0",
     "@types/mocha": "^8.2.1",
