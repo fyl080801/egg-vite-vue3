@@ -132,7 +132,12 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/standalone@7.13.9", "@babel/standalone@^7.12.12":
+"@babel/standalone@7.13.10":
+  version "7.13.10"
+  resolved "https://registry.npm.taobao.org/@babel/standalone/download/@babel/standalone-7.13.10.tgz#444627b445d9914973551ee17dbe1ea345635bf3"
+  integrity sha1-REYntEXZkUlzVR7hfb4eo0VjW/M=
+
+"@babel/standalone@^7.12.12":
   version "7.13.9"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.13.9.tgz#38e78673e19f5077f4b294ad346780634e59e276"
   integrity sha512-9ZpIl8rXXQqm5OdsQVhlBSPttwabiHGPGrl5N2bIxB9XS2NJW+1oiPFgMMNd+57C/xVwsEwD2mzv0KValOwlQA==
@@ -1397,10 +1402,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.1.tgz#283f669ff76d7b8260df8ab7a4262cc83d988256"
   integrity sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==
 
-"@types/mocha@^8.2.1":
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-8.2.1.tgz#f3f3ae4590c5386fc7c543aae9b78d4cf30ffee9"
-  integrity sha512-NysN+bNqj6E0Hv4CTGWSlPzMW6vTKjDpOteycDkV4IWBsO+PU48JonrPzV9ODjiI2XrjmA05KInLgF5ivZ/YGQ==
+"@types/mocha@^8.2.2":
+  version "8.2.2"
+  resolved "https://registry.npm.taobao.org/@types/mocha/download/@types/mocha-8.2.2.tgz#91daa226eb8c2ff261e6a8cbf8c7304641e095e0"
+  integrity sha1-kdqiJuuML/Jh5qjL+McwRkHgleA=
 
 "@types/node@*":
   version "14.14.31"
@@ -11776,9 +11781,9 @@ vite@^2.1.2:
     fsevents "~2.3.1"
 
 vue-router@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.4.tgz#ad9b4b7bbdad622407b4ff189b1646f48c1e9053"
-  integrity sha512-uN6PDEaYdU9aRO7mU+Dkr1uaY49hV3fucEDG/Vre/Qj8ct3RoJS16vcPrvKVzn69zDDjBV5b9Xw7fZA9r6b/Iw==
+  version "4.0.5"
+  resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-4.0.5.tgz#dd0a4134bc950c37aef64b973e9ee1008428d8fa"
+  integrity sha1-3QpBNLyVDDeu9kuXPp7hAIQo2Po=
 
 vue@^3.0.7:
   version "3.0.7"
