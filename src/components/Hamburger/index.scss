@@ -1,0 +1,9 @@
+.nav-hamburger {
+  .svg-icon {
+    vertical-align: middle;
+  }
+
+  &.is-active {
+    transform: rotate(180deg);
+  }
+}

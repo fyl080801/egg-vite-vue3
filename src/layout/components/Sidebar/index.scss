@@ -1,0 +1,43 @@
+.sidebar-wrapper {
+  .el-scrollbar {
+    height: 100%;
+  }
+
+  .has-logo {
+    .el-scrollbar {
+      height: calc(100% - 50px);
+    }
+  }
+
+  .el-menu {
+    border: none;
+    height: 100%;
+    width: 100% !important;
+  }
+}
+
+.sidebar-container {
+  // reset element-ui css
+  .horizontal-collapse-transition {
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+      0s padding-right ease-in-out;
+  }
+
+  .scrollbar-wrapper {
+    overflow-x: hidden !important;
+  }
+
+  .el-scrollbar__view {
+    height: 100%;
+  }
+
+  .el-scrollbar__bar {
+    &.is-vertical {
+      right: 0px;
+    }
+
+    &.is-horizontal {
+      display: none;
+    }
+  }
+}
