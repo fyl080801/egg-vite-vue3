@@ -18,6 +18,8 @@
 
 import { onBeforeMount, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { app } from '../../store';
+import { DeviceType } from '../../store/app';
 
 const WIDTH = 992; // refer to Bootstrap's responsive design
 
@@ -29,21 +31,25 @@ export const isMobile = () => {
 export const resizeHandler = () => {
   if (!document.hidden) {
     const mobile = isMobile();
-    // AppModule.ToggleDevice(isMobile ? DeviceType.Mobile : DeviceType.Desktop);
+
+    app.toggleDevice(mobile ? DeviceType.Mobile : DeviceType.Desktop);
+
     if (mobile) {
-      // AppModule.CloseSideBar(true);
+      app.closeSideBar(true);
     }
   }
 };
 
 export const useResize = () => {
   const route = useRoute();
+
   watch(
     () => route.name,
     () => {
-      // if (this.device === DeviceType.Mobile && this.sidebar.opened) {
-      //   AppModule.CloseSideBar(false);
-      // }
+      const appState = app.getState();
+      if (appState.device === DeviceType.Mobile && appState.sidebar.opened) {
+        app.closeSideBar(false);
+      }
     }
   );
 
@@ -54,8 +60,8 @@ export const useResize = () => {
   onMounted(() => {
     const mobile = isMobile();
     if (mobile) {
-      // AppModule.ToggleDevice(DeviceType.Mobile);
-      // AppModule.CloseSideBar(true);
+      app.toggleDevice(DeviceType.Mobile);
+      app.closeSideBar(true);
     }
   });
 

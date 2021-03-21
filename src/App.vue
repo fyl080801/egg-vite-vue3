@@ -4,6 +4,12 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+import { createStore } from './store';
+
+createStore();
+</script>
+
 <style lang="css">
 @tailwind base;
 @tailwind components;

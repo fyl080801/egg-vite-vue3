@@ -105,8 +105,39 @@ export default Vue.extend({
   }
 }) -->
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import Hamburger from '../../../components/Hamburger';
+import Screenfull from '../../../components/Screenfull';
+import SizeSelect from '../../../components/SizeSelect';
+import { app } from '../../../store';
+import { DeviceType } from '../../../store/app';
+
+const { sidebar, device } = app.getState();
+
+const toggleSideBar = () => {
+  app.toggleSideBar(false);
+};
+</script>
 
 <template>
-  <div class="navbar"></div>
+  <div class="navbar">
+    <hamburger
+      class="hamburger-container"
+      :is-active="sidebar.opened"
+      @toggle-click="toggleSideBar"
+    ></hamburger>
+    <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
+    <div class="right-menu">
+      <template v-if="device !== DeviceType.Mobile">
+        <screenfull class="right-menu-item hover-effect" />
+        <el-tooltip content="设置界面尺寸" effect="dark" placement="bottom">
+          <size-select class="right-menu-item hover-effect" />
+        </el-tooltip>
+      </template>
+    </div>
+  </div>
 </template>
+
+<style lang="scss">
+// @import './index.scss';
+</style>

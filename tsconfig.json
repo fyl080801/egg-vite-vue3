@@ -1,8 +1,8 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
+    "target": "ES2017",
+    "module": "CommonJS",
     "strict": true,
     "noImplicitAny": false,
     "experimentalDecorators": true,
@@ -20,7 +20,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "inlineSourceMap": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "types": ["vite/client"]
+    // "baseUrl": "./",
+    // "paths": {
+    //   "@src/*": ["src/*"]
+    // }
   },
   "exclude": ["app/public", "app/views", "node_modules*"]
 }

@@ -19,20 +19,16 @@ export default Vue.extend({
   }
 }) -->
 
-<script lang="ts" setup>
-import { useRoute } from 'vue-router';
-
-const key = useRoute().path;
-</script>
-
 <template>
   <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <router-view :key="key" />
-    </transition>
+    <router-view v-slot="{ Component }">
+      <transition name="fade-transform" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </section>
 </template>
 
 <style lang="scss">
-@import './index.scss';
+// @import './index.scss';
 </style>

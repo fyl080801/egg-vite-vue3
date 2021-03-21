@@ -55,14 +55,52 @@ export default ResizeMixin.extend({
 }) -->
 
 <script lang="ts" setup>
-import AppMain from './components/AppMain';
+import { computed } from 'vue';
+import { AppMain, Navbar, Sidebar } from './components';
 import { useResize } from './mixin/resize';
+import { app, settings } from '../store';
+import { DeviceType } from '../store/app';
 
 useResize();
+
+const handleClickOutside = () => {
+  app.closeSideBar(false);
+};
+
+const appState = app.getState();
+const settingsState = settings.getState();
+
+const classObj = computed(() => ({
+  hideSidebar: !appState.sidebar.opened,
+  openSidebar: appState.sidebar.opened,
+  withoutAnimation: appState.sidebar.withoutAnimation,
+  mobile: appState.device === DeviceType.Mobile,
+}));
 </script>
 
 <template>
-  <div class="app-wrapper">
-    <app-main></app-main>
+  <div class="app-wrapper" :class="classObj">
+    <div
+      v-if="classObj.mobile && appState.sidebar.opened"
+      class="drawer-bg"
+      @click="handleClickOutside"
+    />
+    <sidebar class="sidebar-container" />
+    <div
+      :class="{
+        hasTagsView: settingsState.showTagsView,
+        'main-container': true,
+      }"
+    >
+      <div :class="{ 'fixed-header': settingsState.fixedHeader }">
+        <navbar />
+        <!-- {/* <tags-view v-if="showTagsView" /> */} -->
+      </div>
+      <app-main></app-main>
+    </div>
   </div>
 </template>
+
+<style lang="scss">
+// @import './index.scss';
+</style>
