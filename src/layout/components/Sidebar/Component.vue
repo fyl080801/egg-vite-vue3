@@ -57,14 +57,15 @@ export default Vue.extend({
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { app, settings } from '../../../store/index';
+import * as app from '../../../store/app';
+import * as settings from '../../../store/settings';
 import SidebarLogo from './SidebarLogo.vue';
 
-const appStore = app.useStore();
-const settingsStore = settings.useStore();
+const { state: appState } = app.useStore();
+const { state: settingsState } = settings.useStore();
 
-const showLogo = computed(() => settingsStore.showSidebarLogo);
-const isCollapse = computed(() => appStore.sidebar.opened);
+const showLogo = computed(() => settingsState.showSidebarLogo);
+const isCollapse = computed(() => appState.sidebar.opened);
 const activeMenu = computed(() => {
   const { meta, path } = useRoute();
 

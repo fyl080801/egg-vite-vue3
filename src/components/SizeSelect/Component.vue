@@ -26,10 +26,13 @@ export default Vue.extend({
 <script lang="ts" setup>
 import { nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { app } from '../../store/index';
+import { useStore } from '../../store/app';
 
 const { fullPath } = useRoute();
-const { size, setSize } = app.useStore();
+const {
+  state,
+  action: { setSize },
+} = useStore();
 const router = useRouter();
 
 const sizeOptions = [
@@ -51,7 +54,7 @@ const refreshView = () => {
 
 const handleSetSize = () => {
   // (this as any).$ELEMENT.size = size;
-  setSize(size);
+  setSize(state.size);
   refreshView();
   // this.$message({
   //   message: '切换成功',
@@ -63,14 +66,14 @@ const handleSetSize = () => {
 <template>
   <el-dropdown trigger="click" @command="handleSetSize">
     <div>
-      <svg-icon :icon-class="size" />
+      <svg-icon :icon-class="state.size" />
     </div>
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item
           v-for="item in sizeOptions"
           :key="item.value"
-          :disabled="size === item.value"
+          :disabled="state.size === item.value"
           :command="item.value"
         >
           {{ item.label }}

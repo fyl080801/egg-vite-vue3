@@ -109,22 +109,24 @@ export default Vue.extend({
 import Hamburger from '../../../components/Hamburger';
 import Screenfull from '../../../components/Screenfull';
 import SizeSelect from '../../../components/SizeSelect';
-import { app } from '../../../store';
-import { DeviceType } from '../../../store/app';
+import { useStore, DeviceType } from '../../../store/app';
 
-const appStore = app.useStore();
+const {
+  state,
+  action: { toggleSideBar },
+} = useStore();
 </script>
 
 <template>
   <div class="navbar">
     <hamburger
       class="hamburger-container"
-      :is-active="appStore.sidebar.opened"
-      @toggle-click="appStore.toggleSideBar(false)"
+      :is-active="state.sidebar.opened"
+      @toggle-click="toggleSideBar(false)"
     ></hamburger>
     <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
     <div class="right-menu">
-      <template v-if="appStore.device !== DeviceType.Mobile">
+      <template v-if="state.device !== DeviceType.Mobile">
         <screenfull class="right-menu-item hover-effect" />
         <el-tooltip content="设置界面尺寸" effect="dark" placement="bottom">
           <size-select class="right-menu-item hover-effect" />

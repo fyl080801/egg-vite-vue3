@@ -1,6 +1,6 @@
 // import { RouteConfig } from 'vue-router';
 
-interface ISettings {
+export interface ISettings {
   appName: string; // Overrides the default title
   description: string;
   help: string; // 帮助链接

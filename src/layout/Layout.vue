@@ -50,19 +50,24 @@ export default ResizeMixin.extend({
 import { computed } from 'vue';
 import { AppMain, Navbar, Sidebar } from './components';
 import { useResize } from './mixin/resize';
-import { app, settings } from '../store';
+import * as app from '../store/app';
+import * as settings from '../store/settings';
 import { DeviceType } from '../store/app';
 
 useResize();
 
-const { closeSideBar } = app.useStore();
+const {
+  state: appState,
+  action: { closeSideBar },
+} = app.useStore();
+
+const { state: settingsState } = settings.useStore();
 
 const handleClickOutside = () => {
   closeSideBar(false);
 };
 
-const appState = app.getState();
-const settingsStore = settings.useStore();
+// const { closeSideBar } = action;
 
 const wrapperClass = computed(() => ({
   hideSidebar: !appState.sidebar.opened,
@@ -82,11 +87,11 @@ const wrapperClass = computed(() => ({
     <sidebar class="sidebar-container" />
     <div
       :class="{
-        hasTagsView: settingsStore.showTagsView,
+        hasTagsView: settingsState.showTagsView,
         'main-container': true,
       }"
     >
-      <div :class="{ 'fixed-header': settingsStore.fixedHeader }">
+      <div :class="{ 'fixed-header': settingsState.fixedHeader }">
         <navbar />
         <!-- {/* <tags-view v-if="showTagsView" /> */} -->
       </div>

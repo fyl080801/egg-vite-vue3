@@ -31,10 +31,10 @@ export default Vue.extend({
 }) -->
 <script lang="ts" setup>
 import { defineProps } from 'vue';
-import { settings } from '../../../store';
+import { useStore } from '../../../store/settings';
 
 const { collapse } = defineProps({ collapse: Boolean });
-const settingsStore = settings.useStore();
+const { state } = useStore();
 </script>
 
 <template>
@@ -50,7 +50,7 @@ const settingsStore = settings.useStore();
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img src="/favicon.ico" class="sidebar-logo" />
-        <h1 class="sidebar-title">{{ settingsStore.appName }}</h1>
+        <h1 class="sidebar-title">{{ state.appName }}</h1>
       </router-link>
     </transition>
   </div>
