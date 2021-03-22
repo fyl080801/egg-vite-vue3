@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import * as path from 'path';
 import legacy from '@vitejs/plugin-legacy';
 import { svgBuilder } from './build/svgBuilder';
 
@@ -12,7 +13,16 @@ export default defineConfig({
   //     '@src/': resolve(__dirname, 'src'),
   //   },
   // },
-  server: {},
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import "${path.resolve(__dirname, './src')}/styles/_variables.scss";
+          @import "${path.resolve(__dirname, './src')}/styles/_mixins.scss";
+        `,
+      },
+    },
+  },
   plugins: [
     vue(),
     legacy({ targets: ['defaults', 'not IE 11'] }),

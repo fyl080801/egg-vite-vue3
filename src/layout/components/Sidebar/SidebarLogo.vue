@@ -34,7 +34,7 @@ import { defineProps } from 'vue';
 import { settings } from '../../../store';
 
 const { collapse } = defineProps({ collapse: Boolean });
-const { appName } = settings.getState();
+const settingsStore = settings.useStore();
 </script>
 
 <template>
@@ -50,8 +50,12 @@ const { appName } = settings.getState();
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
         <img src="/favicon.ico" class="sidebar-logo" />
-        <h1 class="sidebar-title">{{ appName }}</h1>
+        <h1 class="sidebar-title">{{ settingsStore.appName }}</h1>
       </router-link>
     </transition>
   </div>
 </template>
+
+<style lang="scss">
+@import './SidebarLogo.scss';
+</style>

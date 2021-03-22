@@ -37,36 +37,37 @@ export const createStore = (
   return getState;
 };
 
-export const setSize = (size: string) => {
+export const useStore = () => {
   const state = getState();
 
-  state.size = size;
+  return reactive({
+    ...state,
+    setSize: (size: string) => {
+      state.size = size;
 
-  cookies.setSize(size);
-};
+      cookies.setSize(size);
+    },
 
-export const toggleDevice = (device: DeviceType) => {
-  const state = getState();
+    toggleDevice: (device: DeviceType) => {
+      state.device = device;
+    },
 
-  state.device = device;
-};
+    closeSideBar: (withoutAnimation: boolean) => {
+      state.sidebar = state.sidebar || {};
+      state.sidebar.opened = false;
+      state.sidebar.withoutAnimation = withoutAnimation;
+      cookies.setSidebarStatus('closed');
+    },
 
-export const closeSideBar = (withoutAnimation: boolean) => {
-  const state = getState();
-
-  state.sidebar.opened = false;
-  state.sidebar.withoutAnimation = withoutAnimation;
-  cookies.setSidebarStatus('closed');
-};
-
-export const toggleSideBar = (withoutAnimation: boolean) => {
-  const state = getState();
-
-  state.sidebar.opened = !state.sidebar.opened;
-  state.sidebar.withoutAnimation = withoutAnimation;
-  if (state.sidebar.opened) {
-    cookies.setSidebarStatus('opened');
-  } else {
-    cookies.setSidebarStatus('closed');
-  }
+    toggleSideBar: (withoutAnimation: boolean) => {
+      state.sidebar = state.sidebar || {};
+      state.sidebar.opened = !state.sidebar.opened;
+      state.sidebar.withoutAnimation = withoutAnimation;
+      if (state.sidebar.opened) {
+        cookies.setSidebarStatus('opened');
+      } else {
+        cookies.setSidebarStatus('closed');
+      }
+    },
+  });
 };

@@ -28,27 +28,28 @@ export const isMobile = () => {
   return rect.width - 1 < WIDTH;
 };
 
-export const resizeHandler = () => {
-  if (!document.hidden) {
-    const mobile = isMobile();
-
-    app.toggleDevice(mobile ? DeviceType.Mobile : DeviceType.Desktop);
-
-    if (mobile) {
-      app.closeSideBar(true);
-    }
-  }
-};
-
 export const useResize = () => {
   const route = useRoute();
+
+  const appStore = app.useStore();
+
+  const resizeHandler = () => {
+    if (!document.hidden) {
+      const mobile = isMobile();
+
+      appStore.toggleDevice(mobile ? DeviceType.Mobile : DeviceType.Desktop);
+
+      if (mobile) {
+        appStore.closeSideBar(true);
+      }
+    }
+  };
 
   watch(
     () => route.name,
     () => {
-      const appState = app.getState();
-      if (appState.device === DeviceType.Mobile && appState.sidebar.opened) {
-        app.closeSideBar(false);
+      if (appStore.device === DeviceType.Mobile && appStore.sidebar.opened) {
+        appStore.closeSideBar(false);
       }
     }
   );
@@ -60,8 +61,8 @@ export const useResize = () => {
   onMounted(() => {
     const mobile = isMobile();
     if (mobile) {
-      app.toggleDevice(DeviceType.Mobile);
-      app.closeSideBar(true);
+      appStore.toggleDevice(DeviceType.Mobile);
+      appStore.closeSideBar(true);
     }
   });
 

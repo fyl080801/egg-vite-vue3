@@ -1,24 +1,3 @@
-<!-- import Vue from 'vue'
-import './index.scss'
-
-export default Vue.extend({
-  name: 'AppMain',
-  computed: {
-    key() {
-      return this.$route.path
-    }
-  },
-  render() {
-    return (
-      <section class="app-main">
-        <transition name="fade-transform" mode="out-in">
-          <router-view key={this.key} />
-        </transition>
-      </section>
-    )
-  }
-}) -->
-
 <template>
   <section class="app-main">
     <router-view v-slot="{ Component }">
@@ -30,5 +9,5 @@ export default Vue.extend({
 </template>
 
 <style lang="scss">
-// @import './index.scss';
+@import './index.scss';
 </style>

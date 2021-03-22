@@ -7,14 +7,6 @@ import './index.scss'
 export default ResizeMixin.extend({
   components: { AppMain, Sidebar, Navbar },
   computed: {
-    classObj() {
-      return {
-        hideSidebar: !this.sidebar.opened,
-        openSidebar: this.sidebar.opened,
-        withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === DeviceType.Mobile
-      }
-    },
     showSettings() {
       return SettingsModule.showSettings
     },
@@ -63,14 +55,16 @@ import { DeviceType } from '../store/app';
 
 useResize();
 
+const { closeSideBar } = app.useStore();
+
 const handleClickOutside = () => {
-  app.closeSideBar(false);
+  closeSideBar(false);
 };
 
 const appState = app.getState();
-const settingsState = settings.getState();
+const settingsStore = settings.useStore();
 
-const classObj = computed(() => ({
+const wrapperClass = computed(() => ({
   hideSidebar: !appState.sidebar.opened,
   openSidebar: appState.sidebar.opened,
   withoutAnimation: appState.sidebar.withoutAnimation,
@@ -79,20 +73,20 @@ const classObj = computed(() => ({
 </script>
 
 <template>
-  <div class="app-wrapper" :class="classObj">
+  <div class="app-wrapper" :class="wrapperClass">
     <div
-      v-if="classObj.mobile && appState.sidebar.opened"
+      v-if="wrapperClass.mobile && appState.sidebar.opened"
       class="drawer-bg"
       @click="handleClickOutside"
     />
     <sidebar class="sidebar-container" />
     <div
       :class="{
-        hasTagsView: settingsState.showTagsView,
+        hasTagsView: settingsStore.showTagsView,
         'main-container': true,
       }"
     >
-      <div :class="{ 'fixed-header': settingsState.fixedHeader }">
+      <div :class="{ 'fixed-header': settingsStore.fixedHeader }">
         <navbar />
         <!-- {/* <tags-view v-if="showTagsView" /> */} -->
       </div>
@@ -102,5 +96,5 @@ const classObj = computed(() => ({
 </template>
 
 <style lang="scss">
-// @import './index.scss';
+@import './index.scss';
 </style>

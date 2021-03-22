@@ -14,7 +14,7 @@ export interface ISettingsState {
 
 const stateSymbol = Symbol('settingsModule');
 
-export const getState = () => {
+const getState = () => {
   return inject<ISettingsState>(stateSymbol) || ({} as ISettingsState);
 };
 
@@ -33,4 +33,12 @@ export const createStore = (
   provide(stateSymbol, reactive(state));
 
   return getState;
+};
+
+export const useStore = () => {
+  const state = getState();
+
+  return reactive({
+    ...state,
+  });
 };

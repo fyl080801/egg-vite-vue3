@@ -15,6 +15,10 @@ const toggleClick = () => {
     :class="[{ 'is-active': isActive }, 'nav-hamburger']"
     @click="toggleClick"
   >
-    <!-- <svg-icon name="hamburger" width="20" height="20"></svg-icon> -->
+    <svg-icon icon-class="hamburger"></svg-icon>
   </div>
 </template>
+
+<style lang="scss">
+@import './index.scss';
+</style>

@@ -60,11 +60,11 @@ import { useRoute } from 'vue-router';
 import { app, settings } from '../../../store/index';
 import SidebarLogo from './SidebarLogo.vue';
 
-const { sidebar } = app.getState();
-const { showSidebarLogo } = settings.getState();
+const appStore = app.useStore();
+const settingsStore = settings.useStore();
 
-const showLogo = computed(() => showSidebarLogo);
-const isCollapse = computed(() => sidebar.opened);
+const showLogo = computed(() => settingsStore.showSidebarLogo);
+const isCollapse = computed(() => appStore.sidebar.opened);
 const activeMenu = computed(() => {
   const { meta, path } = useRoute();
 
@@ -99,3 +99,7 @@ const activeMenu = computed(() => {
     </el-scrollbar>
   </div>
 </template>
+
+<style lang="scss">
+@import './index.scss';
+</style>

@@ -1,5 +1,4 @@
 <!-- import Vue from 'vue'
-import { AppModule } from '@/store/modules/app'
 
 export default Vue.extend({
   methods: {
@@ -30,7 +29,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { app } from '../../store/index';
 
 const { fullPath } = useRoute();
-const { size } = app.getState();
+const { size, setSize } = app.useStore();
 const router = useRouter();
 
 const sizeOptions = [
@@ -52,7 +51,7 @@ const refreshView = () => {
 
 const handleSetSize = () => {
   // (this as any).$ELEMENT.size = size;
-  app.setSize(size);
+  setSize(size);
   refreshView();
   // this.$message({
   //   message: '切换成功',
