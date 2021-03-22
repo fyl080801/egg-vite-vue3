@@ -8,7 +8,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import SizeSelect from '@/components/SizeSelect'
 import Screenfull from '@/components/Screenfull'
 import Help from '@/components/Help'
-import AvatarUri from '@/assets/images/avatar.gif'
+
 
 export default Vue.extend({
   name: 'Navbar',
@@ -25,7 +25,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    toggleSideBar() {
+    toggleSideBatoggleSideBarr() {
       AppModule.ToggleSideBar(false)
     },
     async logout() {
@@ -40,12 +40,6 @@ export default Vue.extend({
   render() {
     return (
       <div class="navbar">
-        <hamburger
-          id="hamburger-container"
-          isActive={this.sidebar.opened}
-          class="hamburger-container"
-          onToggleClick={this.toggleSideBar}
-        />
         {/* 这期先不加导航 */}
         <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
         <div class="right-menu">
@@ -62,43 +56,6 @@ export default Vue.extend({
               {/* <lang-select class="right-menu-item hover-effect" /> */}
             </fragment>
           ) : null}
-
-          <el-dropdown
-            class="avatar-container right-menu-item hover-effect"
-            trigger="click"
-            onCommand={command => {
-              ;(this[command] || (() => {}))()
-            }}
-          >
-            <div class="avatar-wrapper">
-              <img src={this.avatar + '?imageView2/1/w/80/h/80'} class="user-avatar" />
-              <i class="el-icon-caret-bottom" />
-            </div>
-            <el-dropdown-menu slot="dropdown">
-              {/* <router-link to="/profile/">
-                <el-dropdown-item>{$t('navbar.profile')}</el-dropdown-item>
-              </router-link> */}
-              <el-dropdown-item>Hi, {UserModule.name}</el-dropdown-item>
-              <router-link to="/">
-                <el-dropdown-item icon="el-icon-s-home">首页</el-dropdown-item>
-              </router-link>
-              {/* <a
-                target="_blank"
-                href="https://github.com/armour/vue-typescript-admin-template/"
-              >
-                <el-dropdown-item>{$t('navbar.github')}</el-dropdown-item>
-              </a> */}
-              {/* <a
-                target="_blank"
-                href="https://armour.github.io/vue-typescript-admin-docs/"
-              >
-                <el-dropdown-item>Docs</el-dropdown-item>
-              </a> */}
-              <el-dropdown-item divided icon="el-icon-switch-button" command="logout">
-                退出
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
         </div>
       </div>
     )
@@ -106,15 +63,29 @@ export default Vue.extend({
 }) -->
 
 <script lang="ts" setup>
+import { computed } from 'vue';
 import Hamburger from '../../../components/Hamburger';
 import Screenfull from '../../../components/Screenfull';
 import SizeSelect from '../../../components/SizeSelect';
 import { useStore, DeviceType } from '../../../store/app';
+import AvatarUri from '../../../assets/images/avatar.gif';
 
 const {
   state,
   action: { toggleSideBar },
 } = useStore();
+
+const avatar = computed(() => {
+  return `${AvatarUri}?imageView2/1/w/80/h/80`; // UserModule.avatar
+});
+
+const commands = {
+  logout: async () => {},
+};
+
+const onAccountCommand = (command) => {
+  (commands[command] || (() => {}))();
+};
 </script>
 
 <template>
@@ -131,6 +102,52 @@ const {
         <el-tooltip content="设置界面尺寸" effect="dark" placement="bottom">
           <size-select class="right-menu-item hover-effect" />
         </el-tooltip>
+        <el-dropdown
+          class="avatar-container right-menu-item hover-effect"
+          trigger="click"
+          @command="onAccountCommand"
+        >
+          <div class="avatar-wrapper">
+            <img :src="avatar" class="user-avatar" />
+            <i class="el-icon-caret-bottom" />
+          </div>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <!-- <router-link to="/profile/">
+                <el-dropdown-item>{$t('navbar.profile')}</el-dropdown-item>
+              </router-link> -->
+
+              <el-dropdown-item>Hi, User</el-dropdown-item>
+
+              <router-link to="/">
+                <el-dropdown-item icon="el-icon-s-home">
+                  首页
+                </el-dropdown-item>
+              </router-link>
+
+              <!-- <a
+                target="_blank"
+                href="https://github.com/armour/vue-typescript-admin-template/"
+              >
+                <el-dropdown-item>{$t('navbar.github')}</el-dropdown-item>
+              </a> -->
+              <!-- <a
+                target="_blank"
+                href="https://armour.github.io/vue-typescript-admin-docs/"
+              >
+                <el-dropdown-item>Docs</el-dropdown-item>
+              </a> -->
+
+              <el-dropdown-item
+                divided
+                icon="el-icon-switch-button"
+                command="logout"
+              >
+                退出
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </template>
     </div>
   </div>

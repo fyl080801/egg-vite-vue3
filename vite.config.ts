@@ -8,11 +8,6 @@ export default defineConfig({
   build: {
     manifest: true,
   },
-  // resolve: {
-  //   alias: {
-  //     '@src/': resolve(__dirname, 'src'),
-  //   },
-  // },
   css: {
     preprocessorOptions: {
       scss: {

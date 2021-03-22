@@ -21,6 +21,7 @@
     "skipDefaultLibCheck": true,
     "inlineSourceMap": true,
     "importHelpers": true,
+    "esModuleInterop": true,
     "types": ["vite/client"]
     // "baseUrl": "./",
     // "paths": {

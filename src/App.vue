@@ -6,6 +6,6 @@
 
 <style lang="css">
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*@tailwind components;
+@tailwind utilities; */
 </style>

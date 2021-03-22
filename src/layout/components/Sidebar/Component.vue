@@ -1,8 +1,5 @@
 <!-- import Vue from 'vue'
-import { AppModule } from '@/store/modules/app'
-import { SettingsModule } from '@/store/modules/settings'
 import variables from '@/styles/_variables.scss'
-import SidebarLogo from './SidebarLogo'
 import SidebarItem from './SidebarItem'
 import './index.scss'
 import { PermissionModule } from '@/store/modules/permission'
@@ -13,19 +10,6 @@ export default Vue.extend({
 
     menu() {
       return PermissionModule.menu
-    },
-
-
-    menuActiveTextColor() {
-      if (SettingsModule.sidebarTextTheme) {
-        return SettingsModule.theme
-      } else {
-        return variables.menuActiveText
-      }
-    },
-
-    variables() {
-      return variables
     },
 
   },
@@ -59,10 +43,14 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import * as app from '../../../store/app';
 import * as settings from '../../../store/settings';
+import * as permission from '../../../store/permission';
 import SidebarLogo from './SidebarLogo.vue';
+import SidebarItem from './SidebarItem.vue';
+import variables from './_variables.scss';
 
 const { state: appState } = app.useStore();
 const { state: settingsState } = settings.useStore();
+const { state: permissionState } = permission.useStore();
 
 const showLogo = computed(() => settingsState.showSidebarLogo);
 const isCollapse = computed(() => appState.sidebar.opened);
@@ -72,6 +60,15 @@ const activeMenu = computed(() => {
   // if set path, the sidebar will highlight the path you set
   return meta.activeMenu || path;
 });
+const menu = computed(() => permissionState.menu);
+const menuActiveTextColor = computed(() => {
+  if (settingsState.sidebarTextTheme) {
+    return settingsState.theme;
+  } else {
+    return variables.menuActiveText;
+  }
+});
+console.log(variables.menuBg);
 </script>
 
 <template>
@@ -81,21 +78,20 @@ const activeMenu = computed(() => {
       <el-menu
         :defaultActive="activeMenu"
         :collapse="isCollapse"
-        background-color="{variables.menuBg}"
-        textColor="{variables.menuText}"
-        active-text-color="{this.menuActiveTextColor}"
+        :background-color="variables.menuBg"
+        :textColor="variables.menuText"
+        :active-text-color="menuActiveTextColor"
         :unique-opened="false"
         :collapse-transition="false"
         mode="vertical"
       >
-        <!-- {this.menu.map(m => (
         <sidebar-item
-          key="{m.path}"
-          item="{m}"
-          basePath="{m.path}"
-          isCollapse="{this.isCollapse}"
+          v-for="m in menu"
+          :key="m.path"
+          :item="m"
+          :base-path="m.path"
+          :is-collapse="isCollapse"
         />
-        ))} -->
       </el-menu>
     </el-scrollbar>
   </div>
