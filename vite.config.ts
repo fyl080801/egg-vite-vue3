@@ -8,6 +8,10 @@ export default defineConfig({
   build: {
     manifest: true,
   },
+  root: process.cwd(),
+  resolve: {
+    alias: [{ find: '@/', replacement: path.resolve(__dirname, '/src') + '/' }],
+  },
   css: {
     preprocessorOptions: {
       scss: {

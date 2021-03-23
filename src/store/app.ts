@@ -1,5 +1,5 @@
 import { readonly, reactive } from 'vue';
-import * as cookies from '../utils/cookies';
+import * as cookies from '@/utils/cookies';
 
 export enum DeviceType {
   Mobile,

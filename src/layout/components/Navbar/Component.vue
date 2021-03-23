@@ -64,11 +64,11 @@ export default Vue.extend({
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import Hamburger from '../../../components/Hamburger';
-import Screenfull from '../../../components/Screenfull';
-import SizeSelect from '../../../components/SizeSelect';
-import { useStore, DeviceType } from '../../../store/app';
-import AvatarUri from '../../../assets/images/avatar.gif';
+import Hamburger from '@/components/Hamburger';
+import Screenfull from '@/components/Screenfull';
+import SizeSelect from '@/components/SizeSelect';
+import { useStore, DeviceType } from '@/store/app';
+import AvatarUri from '@/assets/images/avatar.gif';
 
 const {
   state,

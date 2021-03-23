@@ -22,11 +22,9 @@
     "inlineSourceMap": true,
     "importHelpers": true,
     "esModuleInterop": true,
+    "lib": ["dom", "esnext"],
     "types": ["vite/client"]
-    // "baseUrl": "./",
-    // "paths": {
-    //   "@src/*": ["src/*"]
-    // }
   },
+  "include": ["app/**/*.ts", "config/**/*.ts"],
   "exclude": ["app/public", "app/views", "node_modules*"]
 }

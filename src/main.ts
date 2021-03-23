@@ -11,8 +11,6 @@ import SvgIcon from './icons';
 import './styles/index.scss';
 import 'element-plus/lib/theme-chalk/index.css';
 
-import './store';
-
 // JRender.use(elementRender);
 
 const app = createApp(App)
