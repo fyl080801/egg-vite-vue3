@@ -8,8 +8,9 @@ import SvgIcon from './icons';
 // import elementRender from './utils/elementRender';
 
 // import './styles/element-variables.scss';
-import './styles/index.scss';
+
 import 'element-plus/lib/theme-chalk/index.css';
+import './styles/index.scss';
 
 // JRender.use(elementRender);
 

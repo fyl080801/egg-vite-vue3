@@ -1,21 +1,3 @@
-// export default Vue.extend({
-//   computed: {
-//     device() {
-//       return AppModule.device
-//     },
-//     sidebar() {
-//       return AppModule.sidebar
-//     }
-//   },
-//   watch: {
-//     $route() {
-//       if (this.device === DeviceType.Mobile && this.sidebar.opened) {
-//         AppModule.CloseSideBar(false)
-//       }
-//     }
-//   },
-// })
-
 import { onBeforeMount, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore, DeviceType } from '../../store/app';
@@ -32,7 +14,7 @@ export const useResize = () => {
 
   const {
     state,
-    action: { toggleDevice, closeSideBar },
+    actions: { toggleDevice, closeSideBar },
   } = useStore();
 
   const resizeHandler = () => {

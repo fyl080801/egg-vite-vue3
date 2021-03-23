@@ -72,6 +72,6 @@ const actions = createActions(state);
 export const useStore = () => {
   return {
     state: readonly(state),
-    action: readonly(actions),
+    actions: readonly(actions),
   };
 };

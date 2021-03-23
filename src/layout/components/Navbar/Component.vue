@@ -66,13 +66,14 @@ export default Vue.extend({
 import { computed } from 'vue';
 import Hamburger from '@/components/Hamburger';
 import Screenfull from '@/components/Screenfull';
-import SizeSelect from '@/components/SizeSelect';
+import Help from '@/components/Help';
+// import SizeSelect from '@/components/SizeSelect';
 import { useStore, DeviceType } from '@/store/app';
 import AvatarUri from '@/assets/images/avatar.gif';
 
 const {
   state,
-  action: { toggleSideBar },
+  actions: { toggleSideBar },
 } = useStore();
 
 const avatar = computed(() => {
@@ -98,6 +99,7 @@ const onAccountCommand = (command) => {
     <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
     <div class="right-menu">
       <template v-if="state.device !== DeviceType.Mobile">
+        <help class="right-menu-item hover-effect"></help>
         <screenfull class="right-menu-item hover-effect" />
         <!-- <el-tooltip content="设置界面尺寸" effect="dark" placement="bottom">
           <size-select class="right-menu-item hover-effect" />

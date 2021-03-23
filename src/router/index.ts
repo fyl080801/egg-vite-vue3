@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-import Layout from '../layout';
+import Layout from '@/layout';
+
+const modules = import.meta.globEager('./modules/**/*.ts');
 
 export const constantRoutes: RouteRecordRaw[] = [
   {
@@ -10,10 +12,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: 'dashboard',
-        component: () =>
-          import(
-            /* webpackChunkName: "dashboard" */ '../views/dashboard/Index.vue'
-          ),
+        component: () => import('@/views/dashboard/Index.vue'),
         name: 'dashboard',
         meta: {
           title: '首页',
@@ -27,68 +26,29 @@ export const constantRoutes: RouteRecordRaw[] = [
     },
   },
   {
-    path: '/page',
-    redirect: '/page/dynamic',
-    component: Layout,
-    children: [
-      {
-        path: 'dynamic',
-        component: () =>
-          import(
-            /* webpackChunkName: "dynamic" */ '../views/dynamicPage/Index.vue'
-          ),
-        name: 'dynamic',
-      },
-    ],
-    meta: {
-      hidden: true,
-    },
-  },
-  {
     path: '/redirect',
     component: Layout,
     meta: { hidden: true },
     children: [
       {
         path: '/redirect/:path(.*)',
-        component: () =>
-          import(
-            /* webpackChunkName: "redirect" */ '../views/redirect/Index.vue'
-          ),
+        component: () => import('@/views/redirect/Index.vue'),
       },
     ],
   },
   {
-    path: '/404',
-    component: () =>
-      import(/* webpackChunkName: "404" */ '../views/errors/404.vue'),
-    meta: { hidden: true },
-  },
-  {
-    path: '/401',
-    component: () =>
-      import(/* webpackChunkName: "401" */ '../views/errors/401.vue'),
-    meta: { hidden: true },
+    path: '/(*)',
+    redirect: '/error/404',
   },
 ];
 
 export default createRouter({
   history: createWebHistory(),
-  routes: [...constantRoutes],
-  // routes: [
-  //   {
-  //     path: '/home',
-  //     name: 'home',
-  //     component: () => import('../views/Home.vue'),
-  //   },
-  //   {
-  //     path: '/about',
-  //     name: 'about',
-  //     component: () => import('../views/About.vue'),
-  //   },
-  //   {
-  //     path: '/:pathMatch(.*)',
-  //     redirect: '/home',
-  //   },
-  // ],
+  routes: [
+    ...constantRoutes,
+    ...Object.keys(modules).map((key) => ({
+      component: Layout,
+      ...modules[key].default,
+    })),
+  ],
 });
