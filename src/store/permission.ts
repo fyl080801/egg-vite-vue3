@@ -12,7 +12,8 @@ const initState: IPermissionState = {
       name: 'dashboard',
       redirect: '',
       title: 'Dashoard',
-      meta: { title: 'Dashboard' },
+      icon: 'dashboard',
+      meta: { title: 'Dashboard', icon: 'dashboard' },
     },
   ],
 };
