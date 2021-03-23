@@ -1,11 +1,11 @@
 <template>
-  <div class="app fixed h-full w-full">
+  <div class="fixed w-full h-full app">
     <router-view></router-view>
   </div>
 </template>
 
 <style lang="css">
 @tailwind base;
-/*@tailwind components;
-@tailwind utilities; */
+@tailwind components;
+@tailwind utilities;
 </style>

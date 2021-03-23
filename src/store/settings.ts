@@ -1,10 +1,10 @@
 import { readonly, reactive } from 'vue';
 import defaultSettings, { ISettings } from '@/settings';
-// import elementVariables from '/@/styles/element-variables.scss';
+import elementVariables from '@/styles/element-variables.module.scss';
 
 const initState = {
   ...defaultSettings,
-  // theme: elementVariables.theme,
+  theme: elementVariables.theme,
   fixedHeader: defaultSettings.fixedHeader,
   showSettings: defaultSettings.showSettings,
   showTagsView: defaultSettings.showTagsView,

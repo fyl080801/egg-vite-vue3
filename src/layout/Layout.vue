@@ -78,7 +78,7 @@ const wrapperClass = computed(() => ({
 </script>
 
 <template>
-  <div class="app-wrapper" :class="wrapperClass">
+  <div class="relative clear-both w-full h-full app-wrapper" :class="wrapperClass">
     <div
       v-if="wrapperClass.mobile && appState.sidebar.opened"
       class="drawer-bg"

@@ -46,7 +46,7 @@ import * as settings from '../../../store/settings';
 import * as permission from '../../../store/permission';
 import SidebarLogo from './SidebarLogo.vue';
 import SidebarItem from './SidebarItem.vue';
-import variables from './_variables.scss';
+import variables from './_variables.module.scss';
 
 const { state: appState } = app.useStore();
 const { state: settingsState } = settings.useStore();
@@ -68,7 +68,6 @@ const menuActiveTextColor = computed(() => {
     return variables.menuActiveText;
   }
 });
-console.log(variables.menuBg);
 </script>
 
 <template>

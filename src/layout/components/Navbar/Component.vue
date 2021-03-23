@@ -99,9 +99,9 @@ const onAccountCommand = (command) => {
     <div class="right-menu">
       <template v-if="state.device !== DeviceType.Mobile">
         <screenfull class="right-menu-item hover-effect" />
-        <el-tooltip content="设置界面尺寸" effect="dark" placement="bottom">
+        <!-- <el-tooltip content="设置界面尺寸" effect="dark" placement="bottom">
           <size-select class="right-menu-item hover-effect" />
-        </el-tooltip>
+        </el-tooltip> -->
         <el-dropdown
           class="avatar-container right-menu-item hover-effect"
           trigger="click"
