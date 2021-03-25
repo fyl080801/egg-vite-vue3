@@ -6,42 +6,6 @@
 // import path from 'path'
 // import { isExternal } from '@/utils/validate'
 
-// const hasPermission = (roles: string[], userRoles: string[]) => {
-//   if (userRoles) {
-//     return roles.some(role => userRoles.includes(role))
-//   } else {
-//     return true
-//   }
-// }
-
-// export const filterAsyncRoutes = (routes: RouteConfig[], roles: string[]) => {
-//   const result: RouteConfig[] = []
-//   routes.forEach(route => {
-//     const r = { ...route }
-//     if (hasPermission(roles, r.meta?.roles)) {
-//       if (r.children) {
-//         r.children = filterAsyncRoutes(r.children, roles)
-//       }
-//       result.push(r)
-//     }
-//   })
-//   return result
-// }
-
-// export const filterRoleMenu = (menu: any[], roles: string[], basePath: string) => {
-//   const result: RouteConfig[] = []
-//   menu.forEach(m => {
-//     const item = { ...m, path: isExternal(m.path) ? m.path : path.join(basePath, m.path) }
-//     if (hasPermission(roles, item.roles)) {
-//       if (item.children) {
-//         item.children = filterRoleMenu(item.children, roles, basePath)
-//       }
-//       result.push(item)
-//     }
-//   })
-//   return result
-// }
-
 // export interface IPermissionState {
 //   routes: RouteConfig[]
 //   dynamicRoutes: RouteConfig[]
@@ -60,71 +24,105 @@
 //     this.dynamicRoutes = routes
 //   }
 
-//   @Mutation
-//   private SET_MENU(menu: any[]) {
-//     this.menu = menu
-//   }
-
-//   @Action
-//   public GenerateRoutes(roles: string[]) {
-//     // 需要加上权限
-//     const accessedRoutes = asyncRoutes
-//     // console.log(roles, asyncRoutes)
-//     // if (roles.includes('admin')) {
-//     //   accessedRoutes = asyncRoutes
-//     // } else {
-//     //   accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
-//     // }
-//     this.SET_ROUTES(
-//       accessedRoutes.filter(route => {
-//         const routeRoles = route.meta?.roles || []
-//         if (routeRoles.length <= 0) {
-//           return true
-//         }
-//         return !!routeRoles.find(r => roles.includes(r))
-//       })
-//     )
-//   }
-
-//   @Action
-//   public GenerateMenu(roles: string[]) {
-//     this.SET_MENU(filterRoleMenu(settings.menu, roles, '/pages'))
-//   }
-// }
-
 // export const PermissionModule = getModule(Permission)
 
 import { reactive, readonly } from 'vue';
-// import { RouteRecordRaw } from 'vue-router';
+import settings from '@/settings';
+import { asyncRoutes, constantRoutes } from '@/router';
+import { RouteRecordRaw } from 'vue-router';
+import { isExternal } from '@/utils/validate';
+import * as path from 'path';
 
 export interface IPermissionState {
   menu: any[];
+  routes: RouteRecordRaw[];
+  dynamicRoutes: RouteRecordRaw[];
 }
 
 const initState: IPermissionState = {
-  menu: [
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      redirect: '',
-      title: 'Dashoard',
-      icon: 'dashboard',
-      meta: { title: 'Dashboard', icon: 'dashboard' },
-    },
-  ],
+  menu: [],
+  routes: [],
+  dynamicRoutes: [],
+};
+
+const hasPermission = (roles: string[], userRoles: string[]) => {
+  if (userRoles) {
+    return roles.some((role) => userRoles.includes(role));
+  }
+  return true;
+};
+
+// const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: string[]) => {
+//   const result: RouteRecordRaw[] = [];
+//   routes.forEach((route) => {
+//     const r = { ...route };
+//     if (
+//       typeof r.meta === 'object' &&
+//       hasPermission(roles, r.meta?.roles as string[])
+//     ) {
+//       if (r.children) {
+//         r.children = filterAsyncRoutes(r.children || [], roles);
+//       }
+//       result.push(r);
+//     }
+//   });
+//   return result;
+// };
+
+const filterRoleMenu = (menu: any[], roles: string[], basePath: string) => {
+  const result: RouteRecordRaw[] = [];
+
+  menu.forEach((m) => {
+    const item = {
+      ...m,
+      path: isExternal(m.path) ? m.path : path.join(basePath, m.path),
+    };
+    if (hasPermission(roles, item.roles)) {
+      if (item.children) {
+        item.children = filterRoleMenu(item.children, roles, basePath);
+      }
+      result.push(item);
+    }
+  });
+
+  return result;
+};
+
+const generateMenu = (state: IPermissionState) => (roles: string[]) => {
+  state.menu = filterRoleMenu(settings.menu, roles, '/pages');
+};
+
+const generateRoutes = (state: IPermissionState) => (roles: string[]) => {
+  // 需要加上权限
+  const accessedRoutes = asyncRoutes;
+  // console.log(roles, asyncRoutes)
+  // if (roles.includes('admin')) {
+  //   accessedRoutes = asyncRoutes
+  // } else {
+  //   accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
+  // }
+  const routes = accessedRoutes.filter((route) => {
+    const routeRoles = (route.meta?.roles as string[]) || [];
+
+    if (routeRoles.length <= 0) {
+      return true;
+    }
+
+    return !!routeRoles.find((r) => roles.includes(r));
+  });
+
+  state.routes = constantRoutes.concat(routes);
+  state.dynamicRoutes = routes;
 };
 
 const createState = () => {
-  return reactive(initState);
+  return reactive(initState) as IPermissionState;
 };
 
 const createActions = (state: IPermissionState) => {
-  console.log(state);
   return {
-    // setSize: setSize(state),
-    // toggleDevice: toggleDevice(state),
-    // closeSideBar: closeSideBar(state),
-    // toggleSideBar: toggleSideBar(state),
+    generateMenu: generateMenu(state),
+    generateRoutes: generateRoutes(state),
   };
 };
 

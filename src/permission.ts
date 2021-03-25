@@ -1,6 +1,6 @@
 // import router from './router'
-// import NProgress from 'nprogress'
-// import 'nprogress/nprogress.css'
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 // import { Route } from 'vue-router'
 // import { UserModule } from '@/store/modules/user'
 // import { PermissionModule } from '@/store/modules/permission'
@@ -8,7 +8,7 @@
 // // import i18n from '@/lang' // Internationalization
 // import settings from './settings'
 
-// NProgress.configure({ showSpinner: false })
+NProgress.configure({ showSpinner: false });
 
 // const getPageTitle = (key: string) => {
 //   const hasKey = key //i18n.te(`route.${key}`)

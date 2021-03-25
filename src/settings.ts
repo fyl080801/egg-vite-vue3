@@ -1,4 +1,4 @@
-// import { RouteConfig } from 'vue-router';
+import { RouteRecordRaw } from 'vue-router';
 
 export interface ISettings {
   appName: string; // Overrides the default title
@@ -14,7 +14,7 @@ export interface ISettings {
   mockServerPort: number; // Port number for mock server
   env: string;
   menu: any[];
-  // storyboard: RouteConfig[];
+  storyboard: RouteRecordRaw[];
 }
 
 const getLocals = () => {
@@ -48,6 +48,7 @@ const settings: ISettings = {
   showSidebarLogo: true,
   errorLog: ['production'],
   sidebarTextTheme: true,
+
   // devServerPort: 9527,
   // mockServerPort: 9528,
   ...getLocals(),
