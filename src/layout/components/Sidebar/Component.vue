@@ -53,7 +53,7 @@ const { state: settingsState } = settings.useStore();
 const { state: permissionState } = permission.useStore();
 
 const showLogo = computed(() => settingsState.showSidebarLogo);
-const isCollapse = computed(() => appState.sidebar.opened);
+const isCollapse = computed(() => !appState.sidebar.opened);
 const activeMenu = computed(() => {
   const { meta, path } = useRoute();
 

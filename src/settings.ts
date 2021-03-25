@@ -22,7 +22,7 @@ const getLocals = () => {
   const app = appTag.length > 0 ? appTag[0] : null;
 
   const defaultAppConfig = {
-    appName: '',
+    appName: 'admin',
     env: '',
     menu: [],
     storyboard: [],

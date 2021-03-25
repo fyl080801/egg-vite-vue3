@@ -33,15 +33,15 @@ export default Vue.extend({
 import { defineProps } from 'vue';
 import { useStore } from '../../../store/settings';
 
-const { collapse } = defineProps({ collapse: Boolean });
+const props = defineProps({ collapse: Boolean });
 const { state } = useStore();
 </script>
 
 <template>
-  <div :class="['sidebar-logo-container', { collapse }]">
+  <div :class="['sidebar-logo-container', { collapse: props.collapse }]">
     <transition name="sidebarLogoFade">
       <router-link
-        v-if="collapse"
+        v-if="props.collapse"
         key="collapse"
         class="sidebar-logo-link"
         to="/"
