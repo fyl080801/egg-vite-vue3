@@ -45,6 +45,10 @@ export default (appInfo: EggAppInfo) => {
     database: 'v3db',
   } as EggSequelizeOptions;
 
+  config.jwt = {
+    secret: '18611443321',
+  };
+
   // the return config will combines to EggAppConfig
   return {
     ...config,

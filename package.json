@@ -34,6 +34,7 @@
   "dependencies": {
     "egg": "^2.29.3",
     "egg-decorator-router": "^1.0.7",
+    "egg-jwt": "^3.1.7",
     "egg-scripts": "^2.13.0",
     "egg-sequelize": "^6.0.0",
     "egg-view-nunjucks": "^2.3.0",

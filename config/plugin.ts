@@ -18,6 +18,11 @@ const plugin: EggPlugin = {
     enable: false,
     package: 'egg-sequelize',
   },
+  jwt: {
+    enable: true,
+    package: 'egg-jwt',
+  },
+
   // plugin1: {
   //   enable: true,
   //   package: 'plugin1',

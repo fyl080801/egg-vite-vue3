@@ -3,12 +3,12 @@ import { Route, HttpGet } from 'egg-decorator-router';
 
 @Route('/api/dynamic')
 export default class DynamicController extends Controller {
-  @HttpGet('/page/:id')
+  @HttpGet('/page')
   public async getPage() {
     const { ctx, service } = this;
 
-    const { id } = ctx.params;
+    const { path } = ctx.query;
 
-    ctx.body = await service.dynamic.getPage(id);
+    ctx.body = await service.dynamic.getPage(path);
   }
 }
