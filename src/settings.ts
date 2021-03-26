@@ -16,6 +16,8 @@ export interface ISettings {
   menu: any[];
   theme: string;
   storyboard: RouteRecordRaw[];
+  whiteList?: string[];
+  loginPath: string;
 }
 
 const getLocals = () => {
@@ -49,6 +51,8 @@ const settings: ISettings = {
   showSidebarLogo: true,
   errorLog: ['production'],
   sidebarTextTheme: true,
+  loginPath: '/login',
+  whiteList: ['/login'],
 
   // devServerPort: 9527,
   // mockServerPort: 9528,

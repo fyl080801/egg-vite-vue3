@@ -31,6 +31,12 @@ const onBeforeEach = async (
   NProgress.start();
 
   // 此处增加一个忽略权限判断的url，比如login
+  const { whiteList } = settings;
+
+  if (whiteList?.includes(to.path)) {
+    next();
+    return;
+  }
 
   const {
     state,
@@ -57,7 +63,7 @@ const onBeforeEach = async (
     }
   } else {
     NProgress.done();
-    window.location.href = '/';
+    window.location.href = settings.loginPath;
   }
 };
 

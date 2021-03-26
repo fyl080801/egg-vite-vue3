@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import dynamicRouter from './modules/dynamic';
+import errorsRouter from './modules/errors';
+import loginRouter from './modules/login';
 
 import Layout from '@/layout';
 
@@ -31,11 +33,6 @@ export const asyncRoutes: RouteRecordRaw[] = [
   //     }
   //   ]
   // },
-  {
-    path: '*',
-    redirect: '/404',
-    meta: { hidden: true },
-  },
 ];
 
 export const constantRoutes: RouteRecordRaw[] = [
@@ -59,6 +56,7 @@ export const constantRoutes: RouteRecordRaw[] = [
       hidden: true,
     },
   },
+
   {
     path: '/redirect',
     component: Layout,
@@ -70,11 +68,15 @@ export const constantRoutes: RouteRecordRaw[] = [
       },
     ],
   },
-  // {
-  //   path: '/(*)',
-  //   redirect: '/404',
-  //   meta: { hidden: true },
-  // },
+
+  loginRouter,
+  errorsRouter,
+
+  {
+    path: '/(*)',
+    redirect: '/error/404',
+    meta: { hidden: true },
+  },
 ];
 
 export default createRouter({
