@@ -2,7 +2,7 @@ import { readonly, reactive } from 'vue';
 import defaultSettings, { ISettings } from '@/settings';
 import elementVariables from '@/styles/element-variables.module.scss';
 
-const initState = {
+const initState: ISettings = {
   ...defaultSettings,
   theme: elementVariables.theme,
   fixedHeader: defaultSettings.fixedHeader,
@@ -15,7 +15,7 @@ const initState = {
 };
 
 const createState = () => {
-  return reactive(initState);
+  return reactive(initState) as ISettings;
 };
 
 const createActions = (state: ISettings) => {

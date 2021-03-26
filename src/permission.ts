@@ -1,47 +1,70 @@
-// import router from './router'
+import router from './router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-// import { Route } from 'vue-router'
-// import { UserModule } from '@/store/modules/user'
-// import { PermissionModule } from '@/store/modules/permission'
-// import { isEmpty } from 'lodash-es'
+import { isEmpty } from 'lodash-es';
+import * as user from '@/store/user';
+import * as permission from '@/store/permission';
 // // import i18n from '@/lang' // Internationalization
-// import settings from './settings'
+import settings from './settings';
+import {
+  NavigationGuardNext,
+  RouteLocationNormalized,
+  RouteRecordRaw,
+} from 'vue-router';
 
 NProgress.configure({ showSpinner: false });
 
-// const getPageTitle = (key: string) => {
-//   const hasKey = key //i18n.te(`route.${key}`)
-//   if (hasKey) {
-//     const pageName = key // i18n.t(`route.${key}`)
-//     return `${pageName} - ${settings.appName}`
-//   }
-//   return `${settings.appName}`
-// }
+const getPageTitle = (key: string) => {
+  const hasKey = key; // i18n.te(`route.${key}`)
+  if (hasKey) {
+    const pageName = key; // i18n.t(`route.${key}`)
+    return `${pageName} - ${settings.appName}`;
+  }
+  return `${settings.appName}`;
+};
 
-// const onBeforeEach = async (to: Route, _: Route, next: any) => {
-//   NProgress.start()
+const onBeforeEach = async (
+  to: RouteLocationNormalized,
+  _from: RouteLocationNormalized,
+  next: NavigationGuardNext
+) => {
+  NProgress.start();
 
-//   if (!isEmpty(UserModule.token)) {
-//     if (UserModule.roles.length === 0) {
-//       await UserModule.GetUserInfo()
-//       PermissionModule.GenerateRoutes(UserModule.roles)
-//       PermissionModule.GenerateMenu(UserModule.roles)
-//       router.addRoutes(PermissionModule.dynamicRoutes)
-//       next({ ...to, replace: true })
-//     } else {
-//       next()
-//     }
-//   } else {
-//     NProgress.done()
-//     window.location.href = '/'
-//   }
-// }
+  // 此处增加一个忽略权限判断的url，比如login
 
-// const onAfterEach = (to: Route) => {
-//   NProgress.done()
-//   document.title = getPageTitle(to.meta.title)
-// }
+  const {
+    state,
+    actions: { getUserInfo },
+  } = user.useStore();
 
-// router.beforeEach(onBeforeEach)
-// router.afterEach(onAfterEach)
+  const {
+    state: { dynamicRoutes },
+    actions: { generateMenu, generateRoutes },
+  } = permission.useStore();
+
+  if (!isEmpty(state.token)) {
+    if (state.roles.length === 0) {
+      await getUserInfo();
+      generateRoutes(state.roles as string[]);
+      generateMenu(state.roles as string[]);
+
+      dynamicRoutes.forEach((route) => {
+        router.addRoute(route as RouteRecordRaw);
+      });
+      next({ ...to, replace: true });
+    } else {
+      next();
+    }
+  } else {
+    NProgress.done();
+    window.location.href = '/';
+  }
+};
+
+const onAfterEach = (to: RouteLocationNormalized) => {
+  NProgress.done();
+  document.title = getPageTitle(to.meta?.title as string);
+};
+
+router.beforeEach(onBeforeEach);
+router.afterEach(onAfterEach);

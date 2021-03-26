@@ -14,6 +14,7 @@ export interface ISettings {
   mockServerPort: number; // Port number for mock server
   env: string;
   menu: any[];
+  theme: string;
   storyboard: RouteRecordRaw[];
 }
 

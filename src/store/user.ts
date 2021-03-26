@@ -7,53 +7,60 @@
 // import store from '@/store'
 // import { isEmpty } from 'lodash-es'
 
+import { decodeSSO, getSSO } from '@/utils/cookies';
+import { isEmpty } from 'lodash-es';
+import { reactive, readonly } from 'vue';
+
 // export interface IUserErp {
-//   email: string
-//   expire: number
-//   fullname: string
-//   hrmDeptId: string
-//   mobile: string
-//   orgId: string
-//   orgName: string
-//   personId: string
-//   tenantCode: string
-//   userId: number
-//   username: string
+//   email: string;
+//   expire: number;
+//   fullname: string;
+//   hrmDeptId: string;
+//   mobile: string;
+//   orgId: string;
+//   orgName: string;
+//   personId: string;
+//   tenantCode: string;
+//   userId: number;
+//   username: string;
 // }
 
-// export interface IUserState {
-//   token: string
-//   name: string
-//   avatar: string
-//   introduction: string
-//   exp: number
-//   erp?: IUserErp
-//   roles: string[]
-//   email: string
-// }
+export interface IUserState {
+  token: string;
+  name: string;
+  avatar: string;
+  introduction: string;
+  exp: number;
+  //   erp?: IUserErp;
+  roles: string[];
+  email: string;
+}
+
+const initState: IUserState = {
+  token: getSSO() || '',
+  name: '',
+  avatar: '',
+  introduction: '',
+  roles: [],
+  email: '',
+  exp: Number.MIN_VALUE,
+  //   erp: {
+  //     email: '',
+  //     expire: Number.MIN_VALUE,
+  //     fullname: '',
+  //     hrmDeptId: '',
+  //     mobile: '',
+  //     orgId: '',
+  //     orgName: '',
+  //     personId: '',
+  //     tenantCode: '',
+  //     userId: 0,
+  //     username: '',
+  //   },
+};
 
 // @Module({ dynamic: true, store, name: 'user' })
 // class User extends VuexModule implements IUserState {
-//   public token = getSSO() || ''
-//   public name = ''
-//   public avatar = ''
-//   public introduction = ''
-//   public roles: string[] = []
-//   public email = ''
-//   public exp = Number.MIN_VALUE
-//   public erp: IUserErp = {
-//     email: '',
-//     expire: Number.MIN_VALUE,
-//     fullname: '',
-//     hrmDeptId: '',
-//     mobile: '',
-//     orgId: '',
-//     orgName: '',
-//     personId: '',
-//     tenantCode: '',
-//     userId: 0,
-//     username: ''
-//   }
 
 //   // @Mutation
 //   // private SET_TOKEN(token: string) {
@@ -111,41 +118,6 @@
 //   //   this.SET_ROLES([])
 //   // }
 
-//   @Action
-//   public async GetUserInfo() {
-//     if (isEmpty(this.token)) {
-//       throw Error('GetUserInfo: token is undefined!')
-//     }
-
-//     const { data } = await new Promise(resolve => {
-//       const sso = decodeSSO()
-//       resolve({
-//         data: {
-//           roles: sso.roleCodes
-//             .split(',')
-//             .filter(item => !isEmpty(item))
-//             .map(s => s.trim()),
-//           name: sso.displayName,
-//           avatar: '',
-//           introduction: '',
-//           exp: sso.exp,
-//           erp: decoceERP(),
-//           email: sso.email
-//         }
-//       })
-//     })
-
-//     const { roles = [], name, avatar, introduction, email, exp, erp } = data
-
-//     this.SET_ROLES(roles)
-//     this.SET_NAME(name)
-//     this.SET_AVATAR(avatar)
-//     this.SET_INTRODUCTION(introduction)
-//     this.SET_EMAIL(email)
-//     this.SET_EXP(exp)
-//     this.SET_ERP(erp)
-//   }
-
 //   // @Action
 //   // public async ChangeRoles(role: string) {
 //   //   // // Dynamically modify permissions
@@ -169,3 +141,54 @@
 // }
 
 // export const UserModule = getModule(User)
+
+const getUserInfo = (state: IUserState) => async () => {
+  if (isEmpty(state.token)) {
+    throw Error('GetUserInfo: token is undefined!');
+  }
+  const { data } = await new Promise((resolve) => {
+    const sso = decodeSSO();
+    resolve({
+      data: {
+        roles: sso.roleCodes
+          .split(',')
+          .filter((item) => !isEmpty(item))
+          .map((s) => s.trim()),
+        name: sso.displayName,
+        avatar: '',
+        introduction: '',
+        exp: sso.exp,
+        // erp: decoceERP(),
+        email: sso.email,
+      },
+    });
+  });
+  const { roles = [], name, avatar, introduction, email, exp } = data;
+
+  state.roles = roles;
+  state.name = name;
+  state.avatar = avatar;
+  state.introduction = introduction;
+  state.email = email;
+  state.exp = exp;
+};
+
+const createState = () => {
+  return reactive(initState) as IUserState;
+};
+
+const createActions = (state: IUserState) => {
+  return {
+    getUserInfo: getUserInfo(state),
+  };
+};
+
+const state = createState();
+const actions = createActions(state);
+
+export const useStore = () => {
+  return {
+    state: readonly(state),
+    actions: readonly(actions),
+  };
+};
