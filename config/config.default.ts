@@ -1,5 +1,5 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
-import { EggSequelizeOptions } from 'egg-sequelize';
+// import { EggSequelizeOptions } from 'egg-sequelize';
 import * as path from 'path';
 
 export default (appInfo: EggAppInfo) => {
@@ -37,16 +37,35 @@ export default (appInfo: EggAppInfo) => {
     csrf: { enable: false },
   };
 
-  config.sequelize = {
-    dialect: 'mysql',
-    host: '127.0.0.1',
-    port: 3306,
-    password: '!QAZ2wsx',
-    database: 'v3db',
-  } as EggSequelizeOptions;
+  // config.sequelize = {
+  //   dialect: 'mysql',
+  //   host: '127.0.0.1',
+  //   port: 3306,
+  //   password: '!QAZ2wsx',
+  //   database: 'v3db',
+  // } as EggSequelizeOptions;
 
   config.jwt = {
     secret: '18611443321',
+  };
+
+  config.typeorm = {
+    type: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'root',
+    password: '!QAZ2wsx',
+    database: 'v3db',
+    synchronize: true,
+    logging: false,
+    entities: ['app/entity/**/*.ts'],
+    migrations: ['app/migration/**/*.ts'],
+    subscribers: ['app/subscriber/**/*.ts'],
+    cli: {
+      entitiesDir: 'app/entity',
+      migrationsDir: 'app/migration',
+      subscribersDir: 'app/subscriber',
+    },
   };
 
   // the return config will combines to EggAppConfig

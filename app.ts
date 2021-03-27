@@ -1,4 +1,5 @@
 import { Application } from 'egg';
+
 // import plugin1 from 'plugin1';
 // import { Sequelize, STRING, INTEGER } from 'sequelize';
 

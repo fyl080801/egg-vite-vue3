@@ -4,24 +4,28 @@ const plugin: EggPlugin = {
   // static: true,
   nunjucks: {
     enable: true,
-    package: 'egg-view-nunjucks',
+    package: 'egg-view-nunjucks'
   },
   vitePlugin: {
     enable: true,
-    package: 'egg-vite-plugin',
+    package: 'egg-vite-plugin'
   },
   decoratorRouter: {
     enable: true,
-    package: 'egg-decorator-router',
+    package: 'egg-decorator-router'
   },
-  sequelize: {
-    enable: false,
-    package: 'egg-sequelize',
-  },
+  // sequelize: {
+  //   enable: false,
+  //   package: 'egg-sequelize',
+  // },
   jwt: {
     enable: true,
-    package: 'egg-jwt',
+    package: 'egg-jwt'
   },
+  typeorm: {
+    enable: true,
+    package: '@forsigner/egg-typeorm'
+  }
 
   // plugin1: {
   //   enable: true,

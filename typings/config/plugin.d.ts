@@ -17,6 +17,8 @@ import 'egg-view';
 import 'egg-view-nunjucks';
 import 'egg-vite-plugin';
 import 'egg-decorator-router';
+import 'egg-jwt';
+import '@forsigner/egg-typeorm';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -35,6 +37,7 @@ declare module 'egg' {
     nunjucks?: EggPluginItem;
     vitePlugin?: EggPluginItem;
     decoratorRouter?: EggPluginItem;
-    sequelize?: EggPluginItem;
+    jwt?: EggPluginItem;
+    typeorm?: EggPluginItem;
   }
 }
