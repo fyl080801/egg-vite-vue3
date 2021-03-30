@@ -2,21 +2,19 @@ import { Controller } from 'egg';
 import {
   Route,
   HttpGet,
-  HttpPost,
+  HttpPost
   // Middleware
 } from 'egg-decorator-router';
-// import account from '../middleware/account';
 
 @Route()
 export default class HomeController extends Controller {
   @HttpGet('/')
   @HttpGet('*')
-  // @Middleware(account)
   public async index() {
     const { ctx } = this;
 
     const renderData: any = {
-      serverText: 'title text',
+      serverText: 'title text'
     };
 
     await ctx.vite.render('index.html', renderData);

@@ -12,7 +12,7 @@ import SvgIcon from './icons';
 import 'element-plus/lib/theme-chalk/index.css';
 import './styles/index.scss';
 
-// import './permission';
+import './permission';
 
 // JRender.use(elementRender);
 

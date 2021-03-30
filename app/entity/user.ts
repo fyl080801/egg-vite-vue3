@@ -7,6 +7,9 @@ export class User {
 
   @Column()
   name: string;
+
+  @Column()
+  isActive: boolean;
 }
 
 export default User;
