@@ -1,51 +1,63 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
-// import { validUsername } from '@/api/account';
+import { validUser } from '@/api/account';
 
 const loginRules = {
-  // username: [
-  //   {
-  //     required: true,
-  //     trigger: 'blur',
-  //     validator: (_rule, value, callback) => {
-  //       if (!validUsername(value)) {
-  //         callback(new Error('Please enter the correct user name'));
-  //       } else {
-  //         callback();
-  //       }
-  //     }
-  //   }
-  // ],
-  // password: [
-  //   {
-  //     required: true,
-  //     trigger: 'blur',
-  //     validator: (_rule, value, callback) => {
-  //       if (value.length < 6) {
-  //         callback(new Error('The password can not be less than 6 digits'));
-  //       } else {
-  //         callback();
-  //       }
-  //     }
-  //   }
-  // ]
+  username: [
+    { required: true, trigger: 'blur', message: '请输入用户名' }
+    // {
+    //   required: true,
+    //   trigger: 'blur',
+    //   validator: (_rule, value, callback) => {
+    //     if (!validUsername(value)) {
+    //       callback(new Error('Please enter the correct user name'));
+    //     } else {
+    //       callback();
+    //     }
+    //   }
+    // }
+  ],
+  password: [
+    { required: true, trigger: 'blur', message: '请输入密码' }
+    // {
+    //   required: true,
+    //   trigger: 'blur',
+    //   validator: (_rule, value, callback) => {
+    //     if (value.length < 6) {
+    //       callback(new Error('The password can not be less than 6 digits'));
+    //     } else {
+    //       callback();
+    //     }
+    //   }
+    // }
+  ]
 };
 
-const loginForm = reactive({ username: 'admin', password: 'admin' });
+const form = reactive({ username: 'admin', password: 'admin' });
 const capsTooltip = ref(false);
 const loading = ref(false);
 
 const username = ref();
 const password = ref();
+const loginForm = ref();
 
 const checkCapslock = () => {};
 
-const handleLogin = () => {};
+const handleLogin = async () => {
+  try {
+    await loginForm.value.validate();
+    await validUser(form.username, form.password);
+  } catch (err) {
+    if (import.meta.env.DEV) {
+      console.warn(err);
+    }
+  }
+};
 
 onMounted(() => {
-  if (loginForm.username === '') {
+  if (form.username === '') {
     username.value.focus();
-  } else if (loginForm.password === '') {
+  } else if (form.password === '') {
     password.value.focus();
   }
 });
@@ -54,15 +66,15 @@ onMounted(() => {
 <template>
   <div class="login-container">
     <el-form
-      ref="loginForm"
-      :model="loginForm"
+      :ref="el => (loginForm = el)"
+      :model="form"
       :rules="loginRules"
       class="login-form"
       autocomplete="on"
       label-position="left"
     >
       <div class="title-container">
-        <h3 class="title">登录</h3>
+        <h3 class="title">系统登录</h3>
       </div>
 
       <el-form-item prop="username">
@@ -71,7 +83,7 @@ onMounted(() => {
         </span>
         <el-input
           :ref="el => (username = el)"
-          v-model="loginForm.username"
+          v-model="form.username"
           placeholder="Username"
           name="username"
           type="text"
@@ -92,7 +104,7 @@ onMounted(() => {
           </span>
           <el-input
             :ref="el => (password = el)"
-            v-model="loginForm.password"
+            v-model="form.password"
             type="password"
             placeholder="Password"
             name="password"
@@ -111,7 +123,7 @@ onMounted(() => {
         style="width:100%;margin-bottom:30px;"
         @click.native.prevent="handleLogin"
       >
-        Login
+        登陆
       </el-button>
     </el-form>
   </div>

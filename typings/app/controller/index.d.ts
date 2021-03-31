@@ -2,14 +2,14 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
+import ExportAccount from '../../../app/controller/account';
 import ExportDynamic from '../../../app/controller/dynamic';
 import ExportHome from '../../../app/controller/home';
-import ExportUser from '../../../app/controller/user';
 
 declare module 'egg' {
   interface IController {
+    account: ExportAccount;
     dynamic: ExportDynamic;
     home: ExportHome;
-    user: ExportUser;
   }
 }
