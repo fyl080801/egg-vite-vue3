@@ -17,6 +17,8 @@ import 'egg-view';
 import 'egg-view-nunjucks';
 import 'egg-vite-plugin';
 import 'egg-decorator-router';
+import 'egg-cors';
+import 'egg-passport';
 import 'egg-jwt';
 import '@forsigner/egg-typeorm';
 import { EggPluginItem } from 'egg';
@@ -37,6 +39,8 @@ declare module 'egg' {
     nunjucks?: EggPluginItem;
     vitePlugin?: EggPluginItem;
     decoratorRouter?: EggPluginItem;
+    cors?: EggPluginItem;
+    passport?: EggPluginItem;
     jwt?: EggPluginItem;
     typeorm?: EggPluginItem;
   }

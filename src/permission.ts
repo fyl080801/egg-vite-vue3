@@ -9,7 +9,7 @@ import settings from './settings';
 import {
   NavigationGuardNext,
   RouteLocationNormalized,
-  RouteRecordRaw,
+  RouteRecordRaw
 } from 'vue-router';
 
 NProgress.configure({ showSpinner: false });
@@ -40,12 +40,11 @@ const onBeforeEach = async (
 
   const {
     state,
-    actions: { getUserInfo },
+    actions: { getUserInfo }
   } = user.useStore();
-
   const {
     state: { dynamicRoutes },
-    actions: { generateMenu, generateRoutes },
+    actions: { generateMenu, generateRoutes }
   } = permission.useStore();
 
   if (!isEmpty(state.token)) {
@@ -54,7 +53,7 @@ const onBeforeEach = async (
       generateRoutes(state.roles as string[]);
       generateMenu(state.roles as string[]);
 
-      dynamicRoutes.forEach((route) => {
+      dynamicRoutes.forEach(route => {
         router.addRoute(route as RouteRecordRaw);
       });
       next({ ...to, replace: true });

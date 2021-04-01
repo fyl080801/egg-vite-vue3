@@ -50,25 +50,6 @@ export default (appInfo: EggAppInfo) => {
     secret: '18611443321'
   };
 
-  config.typeorm = {
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '!QAZ2wsx',
-    database: 'v3db',
-    synchronize: true,
-    logging: false,
-    entities: ['app/entity/**/*.ts'],
-    migrations: ['app/migration/**/*.ts'],
-    subscribers: ['app/subscriber/**/*.ts'],
-    cli: {
-      entitiesDir: 'app/entity',
-      migrationsDir: 'app/migration',
-      subscribersDir: 'app/subscriber'
-    }
-  };
-
   // the return config will combines to EggAppConfig
   return {
     ...config,

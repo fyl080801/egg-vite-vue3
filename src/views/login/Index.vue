@@ -1,36 +1,11 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 import { validUser } from '@/api/account';
+// import { ElMessage } from 'element-plus';
 
 const loginRules = {
-  username: [
-    { required: true, trigger: 'blur', message: '请输入用户名' }
-    // {
-    //   required: true,
-    //   trigger: 'blur',
-    //   validator: (_rule, value, callback) => {
-    //     if (!validUsername(value)) {
-    //       callback(new Error('Please enter the correct user name'));
-    //     } else {
-    //       callback();
-    //     }
-    //   }
-    // }
-  ],
-  password: [
-    { required: true, trigger: 'blur', message: '请输入密码' }
-    // {
-    //   required: true,
-    //   trigger: 'blur',
-    //   validator: (_rule, value, callback) => {
-    //     if (value.length < 6) {
-    //       callback(new Error('The password can not be less than 6 digits'));
-    //     } else {
-    //       callback();
-    //     }
-    //   }
-    // }
-  ]
+  username: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
+  password: [{ required: true, trigger: 'blur', message: '请输入密码' }]
 };
 
 const form = reactive({ username: 'admin', password: 'admin' });
@@ -46,11 +21,16 @@ const checkCapslock = () => {};
 const handleLogin = async () => {
   try {
     await loginForm.value.validate();
-    await validUser(form.username, form.password);
+    validUser(form.username, form.password);
+    // const { data } = await ;
+    // if (!data.success) {
+    //   ElMessage.error(data.message);
+    // }
   } catch (err) {
     if (import.meta.env.DEV) {
       console.warn(err);
     }
+    // ElMessage.error(err.message);
   }
 };
 

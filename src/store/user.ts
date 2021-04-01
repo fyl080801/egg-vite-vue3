@@ -43,20 +43,7 @@ const initState: IUserState = {
   introduction: '',
   roles: [],
   email: '',
-  exp: Number.MIN_VALUE,
-  //   erp: {
-  //     email: '',
-  //     expire: Number.MIN_VALUE,
-  //     fullname: '',
-  //     hrmDeptId: '',
-  //     mobile: '',
-  //     orgId: '',
-  //     orgName: '',
-  //     personId: '',
-  //     tenantCode: '',
-  //     userId: 0,
-  //     username: '',
-  //   },
+  exp: Number.MIN_VALUE
 };
 
 // @Module({ dynamic: true, store, name: 'user' })
@@ -146,21 +133,21 @@ const getUserInfo = (state: IUserState) => async () => {
   if (isEmpty(state.token)) {
     throw Error('GetUserInfo: token is undefined!');
   }
-  const { data } = await new Promise((resolve) => {
+  const { data } = await new Promise(resolve => {
     const sso = decodeSSO();
     resolve({
       data: {
         roles: sso.roleCodes
           .split(',')
-          .filter((item) => !isEmpty(item))
-          .map((s) => s.trim()),
+          .filter(item => !isEmpty(item))
+          .map(s => s.trim()),
         name: sso.displayName,
         avatar: '',
         introduction: '',
         exp: sso.exp,
         // erp: decoceERP(),
-        email: sso.email,
-      },
+        email: sso.email
+      }
     });
   });
   const { roles = [], name, avatar, introduction, email, exp } = data;
@@ -179,7 +166,7 @@ const createState = () => {
 
 const createActions = (state: IUserState) => {
   return {
-    getUserInfo: getUserInfo(state),
+    getUserInfo: getUserInfo(state)
   };
 };
 
@@ -189,6 +176,6 @@ const actions = createActions(state);
 export const useStore = () => {
   return {
     state: readonly(state),
-    actions: readonly(actions),
+    actions: readonly(actions)
   };
 };

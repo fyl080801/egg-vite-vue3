@@ -17,13 +17,13 @@ export const getSize = () => cookies.get(sizeKey);
 export const setSize = (size: string) => cookies.set(sizeKey, size);
 
 // User
-const tokenKey = 'psp_token';
+const tokenKey = 'token';
 export const getCsrfToken = () => cookies.get('csrfToken');
 export const setToken = (token: string) => cookies.set(tokenKey, token);
 export const removeToken = () => cookies.remove(tokenKey);
 
 export const getSSO = () => {
-  return cookies.get('psp_token');
+  return cookies.get(tokenKey);
 };
 
 // export const getERP = () => {

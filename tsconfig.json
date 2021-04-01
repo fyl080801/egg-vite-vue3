@@ -25,6 +25,6 @@
     "lib": ["dom", "esnext"],
     "types": ["vite/client"]
   },
-  "include": ["app/**/*.ts", "config/**/*.ts", "typings/**/*.d.ts"],
+  "include": ["app.ts", "app/**/*.ts", "config/**/*.ts", "typings/**/*.d.ts"],
   "exclude": ["app/public", "app/views", "node_modules*"]
 }
