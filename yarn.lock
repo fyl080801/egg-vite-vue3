@@ -317,6 +317,13 @@
     "@json2render/core" "^0.2.3"
     "@json2render/utils" "^0.2.2"
 
+"@koa/cors@^3.0.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@koa/cors/-/cors-3.1.0.tgz#618bb073438cfdbd3ebd0e648a76e33b84f3a3b2"
+  integrity sha512-7ulRC1da/rBa6kj6P4g2aJfnET3z8Uf3SWu60cjbtxTA5g8lxRdX/Bd2P92EagGwwAhANeNw8T8if99rJliR6Q==
+  dependencies:
+    vary "^1.1.2"
+
 "@lerna/add@4.0.0":
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/@lerna/add/download/@lerna/add-4.0.0.tgz?cache=0&sync_timestamp=1612998731462&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40lerna%2Fadd%2Fdownload%2F%40lerna%2Fadd-4.0.0.tgz#c36f57d132502a57b9e7058d1548b7a565ef183f"
@@ -1621,17 +1628,6 @@
     estree-walker "^2.0.1"
     source-map "^0.6.1"
 
-"@vue/compiler-core@3.0.9":
-  version "3.0.9"
-  resolved "https://registry.npm.taobao.org/@vue/compiler-core/download/@vue/compiler-core-3.0.9.tgz?cache=0&sync_timestamp=1617149324381&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fcompiler-core%2Fdownload%2F%40vue%2Fcompiler-core-3.0.9.tgz#ec7efa676889aee006fc43739ee4a67a952ac623"
-  integrity sha1-7H76Z2iJruAG/ENznuSmepUqxiM=
-  dependencies:
-    "@babel/parser" "^7.12.0"
-    "@babel/types" "^7.12.0"
-    "@vue/shared" "3.0.9"
-    estree-walker "^2.0.1"
-    source-map "^0.6.1"
-
 "@vue/compiler-dom@3.0.10":
   version "3.0.10"
   resolved "https://registry.npm.taobao.org/@vue/compiler-dom/download/@vue/compiler-dom-3.0.10.tgz?cache=0&sync_timestamp=1617149324782&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fcompiler-dom%2Fdownload%2F%40vue%2Fcompiler-dom-3.0.10.tgz#59d3597498e7d4b0b92f3886a823f99d5b08f1fe"
@@ -1640,25 +1636,17 @@
     "@vue/compiler-core" "3.0.10"
     "@vue/shared" "3.0.10"
 
-"@vue/compiler-dom@3.0.9":
-  version "3.0.9"
-  resolved "https://registry.npm.taobao.org/@vue/compiler-dom/download/@vue/compiler-dom-3.0.9.tgz?cache=0&sync_timestamp=1617149324782&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fcompiler-dom%2Fdownload%2F%40vue%2Fcompiler-dom-3.0.9.tgz#1fd554097d9ab36eca73bc6d0d9607fecf94e71c"
-  integrity sha1-H9VUCX2as27Kc7xtDZYH/s+U5xw=
-  dependencies:
-    "@vue/compiler-core" "3.0.9"
-    "@vue/shared" "3.0.9"
-
-"@vue/compiler-sfc@3.0.9":
-  version "3.0.9"
-  resolved "https://registry.npm.taobao.org/@vue/compiler-sfc/download/@vue/compiler-sfc-3.0.9.tgz?cache=0&sync_timestamp=1617149325086&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fcompiler-sfc%2Fdownload%2F%40vue%2Fcompiler-sfc-3.0.9.tgz#0f993a6e159ca6ad351d8ee0c4734771d2590115"
-  integrity sha1-D5k6bhWcpq01HY7gxHNHcdJZARU=
+"@vue/compiler-sfc@3.0.10":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.0.10.tgz#de6bc9be7f5ab1d944048a9be04c72c3571d4321"
+  integrity sha512-LLbXHwKMM72aomKsj9AySkLP1xIHREh/3w0nueenKhsWuaKTL1/XUhIPml23+Z+tX55qeJiUIHDeJuFSxfgQfg==
   dependencies:
     "@babel/parser" "^7.13.9"
     "@babel/types" "^7.13.0"
-    "@vue/compiler-core" "3.0.9"
-    "@vue/compiler-dom" "3.0.9"
-    "@vue/compiler-ssr" "3.0.9"
-    "@vue/shared" "3.0.9"
+    "@vue/compiler-core" "3.0.10"
+    "@vue/compiler-dom" "3.0.10"
+    "@vue/compiler-ssr" "3.0.10"
+    "@vue/shared" "3.0.10"
     consolidate "^0.16.0"
     estree-walker "^2.0.1"
     hash-sum "^2.0.0"
@@ -1670,13 +1658,13 @@
     postcss-selector-parser "^6.0.4"
     source-map "^0.6.1"
 
-"@vue/compiler-ssr@3.0.9":
-  version "3.0.9"
-  resolved "https://registry.npm.taobao.org/@vue/compiler-ssr/download/@vue/compiler-ssr-3.0.9.tgz?cache=0&sync_timestamp=1617149325380&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fcompiler-ssr%2Fdownload%2F%40vue%2Fcompiler-ssr-3.0.9.tgz#aebce25e573b9db34964b682bb1631a7240ba43d"
-  integrity sha1-rrziXlc7nbNJZLaCuxYxpyQLpD0=
+"@vue/compiler-ssr@3.0.10":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@vue/compiler-ssr/-/compiler-ssr-3.0.10.tgz#6ccc647bda49c0fc1ca100219e9c71268e048120"
+  integrity sha512-skrPSp9pjZG3unqHpUaEaRRpO1yYxbCXRfJ1kZW8PTGAg5g3Y/hrUet5+Q6zCIZwr5j1mSMBSLXMDCjFuyyZLg==
   dependencies:
-    "@vue/compiler-dom" "3.0.9"
-    "@vue/shared" "3.0.9"
+    "@vue/compiler-dom" "3.0.10"
+    "@vue/shared" "3.0.10"
 
 "@vue/reactivity@3.0.10":
   version "3.0.10"
@@ -1706,11 +1694,6 @@
   version "3.0.10"
   resolved "https://registry.npm.taobao.org/@vue/shared/download/@vue/shared-3.0.10.tgz?cache=0&sync_timestamp=1617149325618&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fshared%2Fdownload%2F%40vue%2Fshared-3.0.10.tgz#5476d5615d01bf339c65c2e804f5909bbc27844a"
   integrity sha1-VHbVYV0BvzOcZcLoBPWQm7wnhEo=
-
-"@vue/shared@3.0.9":
-  version "3.0.9"
-  resolved "https://registry.npm.taobao.org/@vue/shared/download/@vue/shared-3.0.9.tgz?cache=0&sync_timestamp=1617149325618&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fshared%2Fdownload%2F%40vue%2Fshared-3.0.9.tgz#09882d745ded52b07e4481d036659d733edd2a9a"
-  integrity sha1-CYgtdF3tUrB+RIHQNmWdcz7dKpo=
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -4713,6 +4696,13 @@ egg-core@^4.18.0:
     node-homedir "^1.1.1"
     ready-callback "^2.1.0"
     utility "^1.16.1"
+
+egg-cors@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/egg-cors/-/egg-cors-2.2.3.tgz#a21a0f6b2dc627a4e778a7282c1adf99aa63f88f"
+  integrity sha512-MLG4pQekZpycLXR45ZAIgFpFYshosBxu1CMdhXAzqPzxUn0xI21gVzqLqcxUrzzulaErCwG6qMXaS1eFyj9u2w==
+  dependencies:
+    "@koa/cors" "^3.0.0"
 
 egg-decorator-router@^1.0.7:
   version "1.0.7"

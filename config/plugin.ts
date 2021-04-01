@@ -14,6 +14,10 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-decorator-router'
   },
+  cors: {
+    enable: true,
+    package: 'egg-cors'
+  },
   // sequelize: {
   //   enable: false,
   //   package: 'egg-sequelize',

@@ -14,27 +14,28 @@ export default (appInfo: EggAppInfo) => {
 
   // add your special config in here
   const bizConfig = {
-    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
+    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`
   };
 
   config.view = {
     defaultViewEngine: 'nunjucks',
     root: path.join(appInfo.baseDir, 'dist'),
     mapping: {
-      '.html': 'nunjucks',
-    },
+      '.html': 'nunjucks'
+    }
   };
 
   config.static = {
     prefix: '/assets/',
     dir: [
       path.join(appInfo.baseDir, 'app/public'),
-      path.join(appInfo.baseDir, 'dist/assets'),
-    ],
+      path.join(appInfo.baseDir, 'dist/assets')
+    ]
   };
 
   config.security = {
     csrf: { enable: false },
+    domainWhiteList: []
   };
 
   // config.sequelize = {
@@ -46,7 +47,7 @@ export default (appInfo: EggAppInfo) => {
   // } as EggSequelizeOptions;
 
   config.jwt = {
-    secret: '18611443321',
+    secret: '18611443321'
   };
 
   config.typeorm = {
@@ -64,13 +65,13 @@ export default (appInfo: EggAppInfo) => {
     cli: {
       entitiesDir: 'app/entity',
       migrationsDir: 'app/migration',
-      subscribersDir: 'app/subscriber',
-    },
+      subscribersDir: 'app/subscriber'
+    }
   };
 
   // the return config will combines to EggAppConfig
   return {
     ...config,
-    ...bizConfig,
+    ...bizConfig
   };
 };
