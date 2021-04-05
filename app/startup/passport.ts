@@ -34,6 +34,13 @@ export default async (app: Application) => {
 
   app.router.post('/api/account/login', app.passport.authenticate('local', {}));
 
-  // app.passport.serializeUser(async (ctx, user) => {});
-  // app.passport.deserializeUser(async (ctx, user) => {});
+  app.passport.serializeUser(async (ctx, user) => {
+    return await Promise.resolve(
+      ctx.app.jwt.sign({ username: user.name }, ctx.app.config.jwt.secret)
+    );
+  });
+
+  app.passport.deserializeUser(async (ctx, user) => {
+    return await Promise.resolve(ctx.app.jwt.decode(user));
+  });
 };

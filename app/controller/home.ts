@@ -1,15 +1,15 @@
 import { Controller } from 'egg';
-import { Route, HttpGet, HttpPost } from 'egg-decorator-router';
-// import account from '../middleware/account';
+import { Route, HttpGet, HttpPost, Middleware } from 'egg-decorator-router';
+import passport from '../middleware/passport';
 
 @Route()
 export default class HomeController extends Controller {
   @HttpGet('/')
   @HttpGet('*')
-  // @Middleware(account({ redirectUrl: '/login' }))
+  @Middleware(passport({ redirectUrl: '/login' }))
   public async index() {
     const { ctx } = this;
-
+    // console.log(ctx.isAuthenticated());
     const renderData: any = {
       serverText: 'title text'
     };
