@@ -10,6 +10,7 @@
 import { decodeSSO, getSSO } from '@/utils/cookies';
 import { isEmpty } from 'lodash-es';
 import { reactive, readonly } from 'vue';
+import { logout } from '@/api/account';
 
 // export interface IUserErp {
 //   email: string;
@@ -144,20 +145,27 @@ const getUserInfo = (state: IUserState) => async () => {
         name: sso.displayName,
         avatar: '',
         introduction: '',
-        exp: sso.exp,
+        // exp: sso.exp,
         // erp: decoceERP(),
         email: sso.email
       }
     });
   });
-  const { roles = [], name, avatar, introduction, email, exp } = data;
+  const {
+    roles = [],
+    name,
+    avatar,
+    introduction,
+    email
+    // exp
+  } = data;
 
   state.roles = roles;
   state.name = name;
   state.avatar = avatar;
   state.introduction = introduction;
   state.email = email;
-  state.exp = exp;
+  // state.exp = exp;
 };
 
 const createState = () => {
@@ -166,7 +174,8 @@ const createState = () => {
 
 const createActions = (state: IUserState) => {
   return {
-    getUserInfo: getUserInfo(state)
+    getUserInfo: getUserInfo(state),
+    logout
   };
 };
 

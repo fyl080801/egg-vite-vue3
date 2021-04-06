@@ -9,7 +9,7 @@ export default class HomeController extends Controller {
   @Middleware(passport({ redirectUrl: '/login' }))
   public async index() {
     const { ctx } = this;
-    // console.log(ctx.isAuthenticated());
+
     const renderData: any = {
       serverText: 'title text'
     };

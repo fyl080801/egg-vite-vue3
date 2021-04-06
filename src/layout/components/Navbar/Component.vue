@@ -69,22 +69,27 @@ import Screenfull from '@/components/Screenfull';
 import Help from '@/components/Help';
 // import SizeSelect from '@/components/SizeSelect';
 import { useStore, DeviceType } from '@/store/app';
+import * as userStore from '@/store/user';
 import AvatarUri from '@/assets/images/avatar.gif';
 
 const {
   state,
-  actions: { toggleSideBar },
+  actions: { toggleSideBar }
 } = useStore();
+
+const {
+  actions: { logout }
+} = userStore.useStore();
 
 const avatar = computed(() => {
   return `${AvatarUri}?imageView2/1/w/80/h/80`; // UserModule.avatar
 });
 
 const commands = {
-  logout: async () => {},
+  logout
 };
 
-const onAccountCommand = (command) => {
+const onAccountCommand = command => {
   (commands[command] || (() => {}))();
 };
 </script>

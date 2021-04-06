@@ -11,7 +11,7 @@ export default (options?) => {
 
     if (!ctx.isAuthenticated()) {
       if (redirectUrl) {
-        ctx.redirect(redirectUrl);
+        ctx.redirect(`${redirectUrl}?returnUrl=${ctx.url}`);
       } else {
         ctx.throw(401);
       }

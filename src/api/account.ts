@@ -4,7 +4,7 @@ export const validUsername = async (value: string) => {
   axios.get('/api/account/user', { params: { username: value } });
 };
 
-export const validUser = async (username: string, password: string) => {
+export const validUser = (username: string, password: string) => {
   // return await axios.post('/api/account/login', { username, password });
   const form = document.createElement('form');
   form.action = '/api/account/login';
@@ -27,4 +27,8 @@ export const validUser = async (username: string, password: string) => {
   form.submit();
 
   // document.body.removeChild(form);
+};
+
+export const logout = () => {
+  window.location.href = `/api/account/logout?returnUrl=${window.location.href}`;
 };
