@@ -5,7 +5,7 @@ import router from './router';
 import Element from 'element-plus';
 import JRender from '@json2render/vue-full';
 import SvgIcon from './icons';
-// import elementRender from './utils/elementRender';
+import ElementPlugin from '@json2render/plugin-elementui';
 
 // import './styles/element-variables.scss';
 
@@ -14,7 +14,7 @@ import './styles/index.scss';
 
 import './permission';
 
-// JRender.use(elementRender);
+JRender.use(ElementPlugin);
 
 const app = createApp(App)
   .use(router)

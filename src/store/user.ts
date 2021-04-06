@@ -27,24 +27,24 @@ import { logout } from '@/api/account';
 // }
 
 export interface IUserState {
-  token: string;
+  token: string | null;
   name: string;
   avatar: string;
   introduction: string;
-  exp: number;
-  //   erp?: IUserErp;
+  // exp: number;
+  // erp?: IUserErp;
   roles: string[];
   email: string;
 }
 
 const initState: IUserState = {
-  token: getSSO() || '',
+  token: null, // getSSO() || '',
   name: '',
   avatar: '',
   introduction: '',
   roles: [],
-  email: '',
-  exp: Number.MIN_VALUE
+  email: ''
+  // exp: Number.MIN_VALUE
 };
 
 // @Module({ dynamic: true, store, name: 'user' })
@@ -132,25 +132,31 @@ const initState: IUserState = {
 
 const getUserInfo = (state: IUserState) => async () => {
   if (isEmpty(state.token)) {
+    state.token = getSSO() || null;
+  }
+
+  if (isEmpty(state.token)) {
     throw Error('GetUserInfo: token is undefined!');
   }
-  const { data } = await new Promise(resolve => {
-    const sso = decodeSSO();
-    resolve({
-      data: {
-        roles: sso.roleCodes
-          .split(',')
-          .filter(item => !isEmpty(item))
-          .map(s => s.trim()),
-        name: sso.displayName,
-        avatar: '',
-        introduction: '',
-        // exp: sso.exp,
-        // erp: decoceERP(),
-        email: sso.email
-      }
-    });
+
+  const sso = decodeSSO();
+
+  const { data } = await Promise.resolve({
+    data: {
+      // roles: sso.roleCodes
+      //   .split(',')
+      //   .filter(item => !isEmpty(item))
+      //   .map(s => s.trim()),
+      roles: sso.roles || [],
+      name: sso.name,
+      avatar: '',
+      introduction: '',
+      // exp: sso.exp,
+      // erp: decoceERP(),
+      email: sso.email
+    }
   });
+
   const {
     roles = [],
     name,

@@ -3,15 +3,15 @@ import { ref } from 'vue';
 import { getPage } from '@/api/dynamic';
 import { useRoute } from 'vue-router';
 
-const { params } = useRoute();
+const { meta } = useRoute();
 
-const content = ref();
+const content = ref({ fields: [] });
 
-getPage(params.id).then((result) => {
-  content.value = result;
+getPage(meta.page).then(result => {
+  content.value = result.data;
 });
 </script>
 
 <template>
-  <v-jrender></v-jrender>
+  <v-jrender :fields="content.fields"></v-jrender>
 </template>

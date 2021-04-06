@@ -1,20 +1,26 @@
-name: dev app
+appName: dev app
 description:
 
 menu:
-  - title: text1
+  - title: test1
     icon:
-    path: /aa
-    roles: rol1,rol2
+    path: /pages/test1
+    # roles:
+    #   - role1
+    #   - role2
 
 storyboard:
-  - path:
+  - path: /pages/test1
     meta:
-      title:
-      page:
-      extends:
-    children:
-      - path:
-        meta:
-          title:
-          page:
+      title: 测试页面
+      page: /dev/devtest1
+
+  - path: /pages/test2
+    meta:
+      title: 测试页面
+      page: /dev/devtest2
+    # children:
+    #   - path:
+    #     meta:
+    #       title:
+    #       page:

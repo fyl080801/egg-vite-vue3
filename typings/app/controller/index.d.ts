@@ -3,13 +3,13 @@
 
 import 'egg';
 import ExportAccount from '../../../app/controller/account';
-import ExportDynamic from '../../../app/controller/dynamic';
+import ExportApps from '../../../app/controller/apps';
 import ExportHome from '../../../app/controller/home';
 
 declare module 'egg' {
   interface IController {
     account: ExportAccount;
-    dynamic: ExportDynamic;
+    apps: ExportApps;
     home: ExportHome;
   }
 }

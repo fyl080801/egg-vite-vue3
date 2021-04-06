@@ -280,6 +280,14 @@
     "@json2render/core" "^0.2.3"
     "@json2render/utils" "^0.2.2"
 
+"@json2render/plugin-elementui@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@json2render/plugin-elementui/-/plugin-elementui-0.2.0.tgz#c9b083c574c985ce68b3e230d8cf94a9abb0ad05"
+  integrity sha512-KQ72TVIW6/xvoha8tZqG81OvtNf2oN3pLXSl+ta8AeAvLfj7EXfSf+5G6j4CTLDNY5WlQdMaaVtydOq7njvEGQ==
+  dependencies:
+    "@json2render/core" "^0.2.3"
+    "@json2render/utils" "^0.2.2"
+
 "@json2render/plugin-modern@^0.2.2":
   version "0.2.2"
   resolved "https://registry.npm.taobao.org/@json2render/plugin-modern/download/@json2render/plugin-modern-0.2.2.tgz#c4d1aa7d076d6381c33ae5dd5f3f707b1122784e"

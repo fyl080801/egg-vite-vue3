@@ -1,5 +1,5 @@
 import axios from '@/utils/axios';
 
-export const getPage = async (id) => {
-  return await axios(`/api/dynamic/page/${id}`, { method: 'GET' });
+export const getPage = async path => {
+  return await axios('/api/apps/page', { method: 'GET', params: { path } });
 };

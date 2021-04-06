@@ -21,22 +21,22 @@ export interface ISettings {
 }
 
 const getLocals = () => {
-  const appTag = document.getElementsByTagName('app');
-  const app = appTag.length > 0 ? appTag[0] : null;
+  const appTag = document.getElementById('app');
+  const appConfig = appTag ? appTag.getAttribute('app-config') : null;
 
   const defaultAppConfig = {
     appName: 'admin',
     env: '',
     menu: [],
-    storyboard: [],
+    storyboard: []
   };
 
-  if (!app) {
+  if (!appConfig) {
     return defaultAppConfig;
   }
 
   try {
-    return JSON.parse(app.innerHTML);
+    return JSON.parse(appConfig);
   } catch {
     return defaultAppConfig;
   }
@@ -56,7 +56,7 @@ const settings: ISettings = {
 
   // devServerPort: 9527,
   // mockServerPort: 9528,
-  ...getLocals(),
+  ...getLocals()
 };
 
 export default settings;

@@ -17,9 +17,10 @@ export default class HomeController extends Controller {
       env: this.config.env
     };
 
+    // 还要根据当前角色过滤菜单
     const renderData: any = {
       title: appConfig.name,
-      appConfig: JSON.stringify(appConfig)
+      appConfig: JSON.stringify(ctx.isAuthenticated() ? appConfig : {})
     };
 
     await ctx.vite.render('index.html', renderData);

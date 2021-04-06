@@ -10,11 +10,15 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1614221169780_4319';
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = ['account'];
 
   // add your special config in here
   const bizConfig = {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`
+  };
+
+  config.development = {
+    ignoreDirs: ['config/apps']
   };
 
   config.view = {

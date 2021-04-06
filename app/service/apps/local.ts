@@ -1,6 +1,6 @@
 import { Service } from 'egg';
-import * as path from 'path';
-import * as fs from 'fs';
+import path from 'path';
+import fs from 'fs';
 import yaml from 'js-yaml';
 
 export default class AppsService extends Service {
@@ -19,7 +19,13 @@ export default class AppsService extends Service {
     }
   }
 
-  public async getPage(path: string) {
-    console.log(path);
+  public async getPage(app: string, page: string) {
+    const fullpath = path.join(`config/apps/${app}/pages`, page) + '.yaml';
+    try {
+      const data = await fs.promises.readFile(fullpath);
+      return yaml.load(data.toString());
+    } catch (e) {
+      throw e;
+    }
   }
 }

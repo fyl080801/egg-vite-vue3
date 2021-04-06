@@ -1,5 +1,6 @@
 import { Application, Context } from 'egg';
 import { Strategy } from 'passport-local';
+import { omit } from 'lodash';
 
 export default async (app: Application) => {
   app.passport.use(
@@ -26,7 +27,7 @@ export default async (app: Application) => {
     });
 
     if (result) {
-      return result;
+      return omit(result, ['password']);
     }
 
     return false;
@@ -36,7 +37,7 @@ export default async (app: Application) => {
 
   app.passport.serializeUser(async (ctx, user) => {
     return await Promise.resolve(
-      ctx.app.jwt.sign({ username: user.name }, ctx.app.config.jwt.secret)
+      ctx.app.jwt.sign(user, ctx.app.config.jwt.secret)
     );
   });
 

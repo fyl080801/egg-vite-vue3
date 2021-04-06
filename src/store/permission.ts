@@ -31,7 +31,8 @@ import settings from '@/settings';
 import { asyncRoutes, constantRoutes } from '@/router';
 import { RouteRecordRaw } from 'vue-router';
 import { isExternal } from '@/utils/validate';
-import * as path from 'path';
+import { resolve } from '../utils/pathResolve';
+// import path from 'path';
 
 export interface IPermissionState {
   menu: any[];
@@ -42,12 +43,12 @@ export interface IPermissionState {
 const initState: IPermissionState = {
   menu: [],
   routes: [],
-  dynamicRoutes: [],
+  dynamicRoutes: []
 };
 
 const hasPermission = (roles: string[], userRoles: string[]) => {
   if (userRoles) {
-    return roles.some((role) => userRoles.includes(role));
+    return roles.some(role => userRoles.includes(role));
   }
   return true;
 };
@@ -72,10 +73,10 @@ const hasPermission = (roles: string[], userRoles: string[]) => {
 const filterRoleMenu = (menu: any[], roles: string[], basePath: string) => {
   const result: RouteRecordRaw[] = [];
 
-  menu.forEach((m) => {
+  (menu || []).forEach(m => {
     const item = {
       ...m,
-      path: isExternal(m.path) ? m.path : path.join(basePath, m.path),
+      path: isExternal(m.path) ? m.path : resolve(basePath, m.path)
     };
     if (hasPermission(roles, item.roles)) {
       if (item.children) {
@@ -101,14 +102,14 @@ const generateRoutes = (state: IPermissionState) => (roles: string[]) => {
   // } else {
   //   accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
   // }
-  const routes = accessedRoutes.filter((route) => {
+  const routes = accessedRoutes.filter(route => {
     const routeRoles = (route.meta?.roles as string[]) || [];
 
     if (routeRoles.length <= 0) {
       return true;
     }
 
-    return !!routeRoles.find((r) => roles.includes(r));
+    return !!routeRoles.find(r => roles.includes(r));
   });
 
   state.routes = constantRoutes.concat(routes);
@@ -122,7 +123,7 @@ const createState = () => {
 const createActions = (state: IPermissionState) => {
   return {
     generateMenu: generateMenu(state),
-    generateRoutes: generateRoutes(state),
+    generateRoutes: generateRoutes(state)
   };
 };
 
@@ -132,6 +133,6 @@ const actions = createActions(state);
 export const useStore = () => {
   return {
     state: readonly(state),
-    actions: readonly(actions),
+    actions: readonly(actions)
   };
 };

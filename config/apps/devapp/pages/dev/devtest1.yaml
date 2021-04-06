@@ -1,0 +1,11 @@
+datasource:
+
+fields:
+  - component: el-page-header
+    props:
+      content: test
+
+  - component: p
+    text: aaaa
+
+model:

@@ -55,7 +55,7 @@ const { item, basePath, isCollapse, isFirstLevel } = defineProps({
   isCollapse: { type: Boolean, default: false },
   isFirstLevel: { type: Boolean, default: true },
 });
-console.log(item);
+
 const alwaysShowRootMenu = computed(() => {
   if (item.alwaysShow) {
     return true;
