@@ -136,7 +136,7 @@ const getUserInfo = (state: IUserState) => async () => {
   }
 
   if (isEmpty(state.token)) {
-    throw Error('GetUserInfo: token is undefined!');
+    return;
   }
 
   const sso = decodeSSO();

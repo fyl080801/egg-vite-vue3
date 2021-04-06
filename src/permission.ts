@@ -53,6 +53,11 @@ const onBeforeEach = async (
   if (isEmpty(userState.token)) {
     await getUserInfo();
 
+    if (isEmpty(userState.token)) {
+      next();
+      return;
+    }
+
     generateRoutes(userState.roles as string[]);
     generateMenu(userState.roles as string[]);
 

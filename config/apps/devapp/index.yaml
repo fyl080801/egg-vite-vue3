@@ -5,9 +5,15 @@ menu:
   - title: test1
     icon:
     path: /pages/test1
-    # roles:
-    #   - role1
-    #   - role2
+
+  - title: 系统管理
+    icon: example
+    path: /pages/system
+    children:
+      - title: 用户管理
+        path: /pages/system/user
+      - title: 角色管理
+        path: /pages/system/role
 
 storyboard:
   - path: /pages/test1
@@ -15,12 +21,12 @@ storyboard:
       title: 测试页面
       page: /dev/devtest1
 
-  - path: /pages/test2
+  - path: /pages/system/user
     meta:
-      title: 测试页面
-      page: /dev/devtest2
-    # children:
-    #   - path:
-    #     meta:
-    #       title:
-    #       page:
+      title: 用户管理
+      page: /system/user
+
+  - path: /pages/system/role
+    meta:
+      title: 角色管理
+      page: /system/role

@@ -53,7 +53,7 @@ const { item, basePath, isCollapse, isFirstLevel } = defineProps({
   item: { type: Object, required: true },
   basePath: { type: String, default: '' },
   isCollapse: { type: Boolean, default: false },
-  isFirstLevel: { type: Boolean, default: true },
+  isFirstLevel: { type: Boolean, default: true }
 });
 
 const alwaysShowRootMenu = computed(() => {
@@ -105,7 +105,7 @@ const resolvePath = (routePath: string) => {
     v-if="!item.hidden"
     :class="[
       isCollapse ? 'simple-mode' : 'full-mode',
-      { 'first-level': isFirstLevel },
+      { 'first-level': isFirstLevel }
     ]"
   >
     <sidebar-item-link
@@ -115,7 +115,7 @@ const resolvePath = (routePath: string) => {
       <el-menu-item
         :index="resolvePath(theOnlyOneChild.path)"
         :class="{
-          'submenu-title-noDropdown': isFirstLevel,
+          'submenu-title-noDropdown': isFirstLevel
         }"
       >
         <svg-icon
@@ -128,12 +128,12 @@ const resolvePath = (routePath: string) => {
       </el-menu-item>
     </sidebar-item-link>
     <el-submenu v-else :index="resolvePath(item.path)" popper-append-to-body>
-      <div slot="title">
+      <template #title>
         <svg-icon v-if="item.icon" :icon-class="item.icon" />
-        <span v-if="item.title" slot="title">
-          {{ !isCollapse ? item.title : null }}
+        <span v-if="item.title">
+          {{ item.title }}
         </span>
-      </div>
+      </template>
       <sidebar-item
         v-for="child in item.children || []"
         :key="child.path"

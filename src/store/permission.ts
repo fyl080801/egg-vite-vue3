@@ -76,7 +76,11 @@ const filterRoleMenu = (menu: any[], roles: string[], basePath: string) => {
   (menu || []).forEach(m => {
     const item = {
       ...m,
-      path: isExternal(m.path) ? m.path : resolve(basePath, m.path)
+      path: m.path
+        ? isExternal(m.path)
+          ? m.path
+          : resolve(basePath, m.path)
+        : ''
     };
     if (hasPermission(roles, item.roles)) {
       if (item.children) {

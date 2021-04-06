@@ -1,0 +1,8 @@
+fields:
+  - component: div
+    children:
+      - component: el-table
+        children:
+          - component: el-table-column
+            props:
+              label: 用户名

@@ -1,0 +1,18 @@
+reference:
+  - toolbar
+
+fields:
+  - component: div
+    children:
+      - component: template-component
+        props:
+          name: toolbar
+
+      - component: el-table
+        children:
+          - component: el-table-column
+            props:
+              label: 角色名
+          - component: el-table-column
+            props:
+              label: 操作

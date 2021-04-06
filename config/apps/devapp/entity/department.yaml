@@ -1,0 +1,13 @@
+description: 部门
+properties:
+  id:
+    type: number
+    primary: true
+
+  name:
+    length: 50
+    type: string
+    nullable: false
+
+  parentId:
+    type: number

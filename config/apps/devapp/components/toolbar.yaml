@@ -1,0 +1,9 @@
+props:
+  - actions
+
+fields:
+  - component: div
+    props:
+      style:
+        display: flex
+    children: $:actions.map((item)=>({ component:'el-button', text:item.text, props:{ onClick:item.handler } }))
