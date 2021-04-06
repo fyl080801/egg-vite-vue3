@@ -1,0 +1,20 @@
+name: dev app
+description:
+
+menu:
+  - title: text1
+    icon:
+    path: /aa
+    roles: rol1,rol2
+
+storyboard:
+  - path:
+    meta:
+      title:
+      page:
+      extends:
+    children:
+      - path:
+        meta:
+          title:
+          page:

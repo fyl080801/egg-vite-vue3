@@ -299,20 +299,20 @@
   resolved "https://registry.npm.taobao.org/@json2render/utils/download/@json2render/utils-0.2.2.tgz#632ad5cb4beb080f94ca9cfcb102172ee85deb3c"
   integrity sha1-YyrVy0vrCA+Uypz8sQIXLuhd6zw=
 
-"@json2render/vue-full@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.npm.taobao.org/@json2render/vue-full/download/@json2render/vue-full-0.1.10.tgz#b09607f2599839e36f57655883970968e1a0d4cd"
-  integrity sha1-sJYH8lmYOeNvV2VYg5cJaOGg1M0=
+"@json2render/vue-full@^0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@json2render/vue-full/-/vue-full-0.1.11.tgz#af7d9ad8912d5a90827d3cc12b548b5fac4a6f67"
+  integrity sha512-i2Gn9I1aCdh3MY4xkY3XLChy1RvL/7R5Sk1vQrbn2VKxVkzgjK/NzVWUtB0hkJPxUMsRkfsZ5GIM3+UDmlO3ow==
   dependencies:
     "@json2render/plugin-classics" "^0.2.2"
     "@json2render/plugin-modern" "^0.2.2"
     "@json2render/plugin-vue" "^0.1.5"
-    "@json2render/vue" "^0.3.3"
+    "@json2render/vue" "^0.3.4"
 
-"@json2render/vue@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.npm.taobao.org/@json2render/vue/download/@json2render/vue-0.3.3.tgz#3b80325f8cdbb0a0a0ae0240f4dd386e8f22cc86"
-  integrity sha1-O4AyX4zbsKCgrgJA9N04bo8izIY=
+"@json2render/vue@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@json2render/vue/-/vue-0.3.4.tgz#35c472a886d85d5937f1366a2038d158a5a3497b"
+  integrity sha512-qtt0jwF7Wlpytlpox107SEMLfsneRhEBd5lwULjc/xnoPjLiqL6gofKnUCibCfrnd/mcW2h+243SCVN3e2eQUg==
   dependencies:
     "@json2render/core" "^0.2.3"
     "@json2render/utils" "^0.2.2"
@@ -1362,6 +1362,11 @@
   version "2.2.6"
   resolved "https://registry.npm.taobao.org/@types/js-cookie/download/@types/js-cookie-2.2.6.tgz?cache=0&sync_timestamp=1613379098247&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fjs-cookie%2Fdownload%2F%40types%2Fjs-cookie-2.2.6.tgz#f1a1cb35aff47bc5cfb05cb0c441ca91e914c26f"
   integrity sha1-8aHLNa/0e8XPsFywxEHKkekUwm8=
+
+"@types/js-yaml@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/js-yaml/-/js-yaml-4.0.0.tgz#d1a11688112091f2c711674df3a65ea2f47b5dfb"
+  integrity sha512-4vlpCM5KPCL5CfGmTbpjwVKbISRYhduEJvvUWsH5EB7QInhEj94XPZ3ts/9FPiLZFqYO0xoW4ZL8z2AabTGgJA==
 
 "@types/json-schema@^7.0.3":
   version "7.0.7"
@@ -7459,8 +7464,8 @@ js-yaml@^3.13.1:
 
 js-yaml@^4.0.0:
   version "4.0.0"
-  resolved "https://registry.npm.taobao.org/js-yaml/download/js-yaml-4.0.0.tgz?cache=0&sync_timestamp=1609680068452&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjs-yaml%2Fdownload%2Fjs-yaml-4.0.0.tgz#f426bc0ff4b4051926cd588c71113183409a121f"
-  integrity sha1-9Ca8D/S0BRkmzViMcRExg0CaEh8=
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.0.0.tgz#f426bc0ff4b4051926cd588c71113183409a121f"
+  integrity sha512-pqon0s+4ScYUvX30wxQi3PogGFAlUyH0awepWvwkj4jD4v+ova3RiYw8bmA6x2rDrEaj8i/oWKoRxpVNW+Re8Q==
   dependencies:
     argparse "^2.0.1"
 

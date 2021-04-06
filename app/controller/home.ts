@@ -1,5 +1,5 @@
 import { Controller } from 'egg';
-import { Route, HttpGet, HttpPost, Middleware } from 'egg-decorator-router';
+import { Route, HttpGet, Middleware } from 'egg-decorator-router';
 import passport from '../middleware/passport';
 
 @Route()
@@ -10,23 +10,18 @@ export default class HomeController extends Controller {
   public async index() {
     const { ctx } = this;
 
+    const appConfig = {
+      ...(await this.service.apps[this.ctx.app.config.appProvider].load(
+        this.ctx.app.config.appName
+      )),
+      env: this.config.env
+    };
+
     const renderData: any = {
-      serverText: 'title text'
+      title: appConfig.name,
+      appConfig: JSON.stringify(appConfig)
     };
 
     await ctx.vite.render('index.html', renderData);
-  }
-
-  @HttpGet('/api')
-  public api() {
-    const { ctx } = this;
-    ctx.body = 'api';
-  }
-
-  @HttpPost('/api')
-  public apiPost() {
-    const { ctx } = this;
-
-    ctx.body = ctx.request.body;
   }
 }

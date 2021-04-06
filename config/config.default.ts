@@ -50,6 +50,10 @@ export default (appInfo: EggAppInfo) => {
     secret: '18611443321'
   };
 
+  // app
+  config.appProvider = 'local';
+  config.appName = 'devapp';
+
   // the return config will combines to EggAppConfig
   return {
     ...config,
