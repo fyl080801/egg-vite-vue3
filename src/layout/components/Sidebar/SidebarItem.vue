@@ -46,7 +46,7 @@ export default Vue.extend({
 <script lang="ts" setup>
 import { defineProps, computed } from 'vue';
 import { isExternal } from '../../../utils/validate';
-import { resolve } from '../../../utils/pathResolve';
+import path from 'path-browserify';
 import SidebarItemLink from './SidebarItemLink.vue';
 
 const { item, basePath, isCollapse, isFirstLevel } = defineProps({
@@ -96,7 +96,7 @@ const resolvePath = (routePath: string) => {
   if (isExternal(basePath)) {
     return basePath;
   }
-  return resolve(basePath, routePath);
+  return path.resolve(basePath, routePath);
 };
 </script>
 

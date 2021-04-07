@@ -81,6 +81,7 @@
     "mocha": "5.2.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
+    "path-browserify": "^1.0.1",
     "postcss": "^8.2.8",
     "sass": "^1.32.8",
     "screenfull": "^5.1.0",

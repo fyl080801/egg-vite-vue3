@@ -23,7 +23,8 @@ export default async (app: Application) => {
 
   app.passport.verify(async (ctx: Context, user) => {
     const result = await ctx.repo.User.findOne({
-      where: { name: user.username }
+      where: { name: user.username, password: user.password },
+      relations: ['roles']
     });
 
     if (result) {

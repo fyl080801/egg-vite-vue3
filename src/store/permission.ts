@@ -31,8 +31,7 @@ import settings from '@/settings';
 import { asyncRoutes, constantRoutes } from '@/router';
 import { RouteRecordRaw } from 'vue-router';
 import { isExternal } from '@/utils/validate';
-import { resolve } from '../utils/pathResolve';
-// import path from 'path';
+import path from 'path-browserify';
 
 export interface IPermissionState {
   menu: any[];
@@ -72,14 +71,14 @@ const hasPermission = (roles: string[], userRoles: string[]) => {
 
 const filterRoleMenu = (menu: any[], roles: string[], basePath: string) => {
   const result: RouteRecordRaw[] = [];
-
+  console.log(path);
   (menu || []).forEach(m => {
     const item = {
       ...m,
       path: m.path
         ? isExternal(m.path)
           ? m.path
-          : resolve(basePath, m.path)
+          : path.resolve(basePath, m.path)
         : ''
     };
     if (hasPermission(roles, item.roles)) {
