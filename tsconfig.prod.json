@@ -8,6 +8,8 @@
     "app/views",
     "node_modules*",
     "src",
-    "vite.config.ts"
+    "packages/**/src",
+    "**/vite.config.ts",
+    "test"
   ]
 }
