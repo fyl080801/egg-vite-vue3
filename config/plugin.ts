@@ -28,6 +28,7 @@ const plugin: EggPlugin = {
   // },
   'view-plugin': {
     enable: true,
+    package: 'view-plugin',
   },
 };
 
