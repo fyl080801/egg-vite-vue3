@@ -3,7 +3,7 @@ set -e
 
 rm -rf output dist node_modules
 
-npm install
+yarn install
 npm run build
 
 cp package.json output
