@@ -1,9 +1,9 @@
 <template>
-  <v-jrender
+  <j-render
     v-model="config.model"
     :fields="config.fields"
-    :datasource="config.datasource"
-  ></v-jrender>
+    :data-source="config.datasource"
+  ></j-render>
 </template>
 
 <script lang="ts" setup>
@@ -16,14 +16,14 @@ const config = reactive({
   datasource: {
     submitdata: {
       type: 'fetch',
-      url: '/api',
-      defaultData: 0,
-      auto: false,
       props: {
-        method: 'POST',
-        body: '$:JSON.stringify(model)',
-        headers: {
-          'Content-Type': 'application/json',
+        url: '/api',
+        props: {
+          method: 'POST',
+          body: '$:JSON.stringify(model)',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
       },
     },
@@ -55,7 +55,7 @@ const config = reactive({
           component: 'p',
           colProps: { span: 24 },
           formProps: {},
-          text: '#: Hello ${model.text} !!',
+          text: '$:`Hello ${model.text} !!`',
         },
         {
           component: 'el-select',
@@ -72,14 +72,14 @@ const config = reactive({
           text: '提交',
           colProps: { span: 24 },
           formProps: {},
-          props: { onClick: '@:submitdata.request()' },
+          props: { onClick: '$:()=>submitdata.fetch()' },
         },
       ],
     },
     {
       component: 'p',
       condition: '$:submitdata.data',
-      text: '#:提交的数据：${JSON.stringify(submitdata.data)}',
+      text: '$:`提交的数据：${JSON.stringify(submitdata.data)}`',
     },
   ],
 });

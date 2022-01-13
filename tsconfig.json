@@ -20,7 +20,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "inlineSourceMap": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "resolveJsonModule": true
   },
   "exclude": ["app/public", "app/views", "node_modules*"]
 }

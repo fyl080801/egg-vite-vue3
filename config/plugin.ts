@@ -6,9 +6,9 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-view-nunjucks',
   },
-  vitePlugin: {
+  '@egglib/statics': {
     enable: true,
-    package: 'egg-vite-plugin',
+    package: '@egglib/statics-vite',
   },
   decoratorRouter: {
     enable: true,
@@ -26,6 +26,9 @@ const plugin: EggPlugin = {
   //   enable: true,
   //   package: 'plugin2',
   // },
+  'view-plugin': {
+    enable: true,
+  },
 };
 
 export default plugin;

@@ -1,13 +1,14 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-
+import JRender, { useGlobalRender } from '@jrender-plus/core';
+import JRenderExtends from '@jrender-plus/extends';
 import Element from 'element-plus';
-import JRender from '@json2render/vue-full';
-import elementRender from './utils/elementRender';
+import { ElementExtends } from './components';
 
-import 'element-plus/lib/theme-chalk/index.css';
+import 'element-plus/theme-chalk/index.css';
 
-JRender.use(elementRender);
+useGlobalRender(JRenderExtends);
+useGlobalRender(ElementExtends);
 
 createApp(App).use(router).use(Element).use(JRender).mount('#app');

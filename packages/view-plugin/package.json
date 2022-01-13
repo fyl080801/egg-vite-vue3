@@ -1,0 +1,24 @@
+{
+  "name": "view-plugin",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "fengyuanliang3 <fengyuanliang2@jd.com>",
+  "homepage": "https://github.com/fyl080801/egg-vite-vue3#readme",
+  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyl080801/egg-vite-vue3.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/fyl080801/egg-vite-vue3/issues"
+  },
+  "eggPlugin": {
+    "name": "view-plugin"
+  }
+}

@@ -3,18 +3,6 @@ import { Route, HttpGet, HttpPost } from 'egg-decorator-router';
 
 @Route()
 export default class HomeController extends Controller {
-  @HttpGet('/')
-  @HttpGet('*')
-  public async index() {
-    const { ctx } = this;
-
-    const renderData: any = {
-      serverText: 'title text',
-    };
-
-    await ctx.vite.render('index.html', renderData);
-  }
-
   @HttpGet('/api')
   public api() {
     const { ctx } = this;

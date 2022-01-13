@@ -3,5 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-import DynamicView from '../components/DynamicView.vue';
+import DynamicView from '../components/DynamicView/DynamicView.vue';
 </script>

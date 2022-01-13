@@ -2,8 +2,13 @@ import { Application } from 'egg';
 // import plugin1 from 'plugin1';
 // import { Sequelize, STRING, INTEGER } from 'sequelize';
 
-const startup = async (app: Application) => {
-  console.log(app.name);
+const startup = async (app: Application & Record<string, any>) => {
+  app.addPageConfig(app.name);
+
+  app.router.get('*', app.viewInject(app.name, 'index.html'), () => {
+    //
+  });
+
   // await app.model.sync({
   //   alter: { drop: false },
   // });
@@ -26,5 +31,4 @@ const startup = async (app: Application) => {
 
 export default (app: Application) => {
   startup(app);
-  // plugin1(app);
 };
