@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - '12'
 before_install:
-  - npm i npminstall -g
+  - npm i yarn -g
 install:
   - yarn
 script:
