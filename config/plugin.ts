@@ -9,6 +9,9 @@ const plugin: EggPlugin = {
   '@egglib/statics': {
     enable: true,
   },
+  '@egglib/statics-vite': {
+    enable: true,
+  },
   decoratorRouter: {
     enable: true,
     package: 'egg-decorator-router',
