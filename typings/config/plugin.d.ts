@@ -1,4 +1,4 @@
-// This file is created by egg-ts-helper@1.29.1
+// This file is created by egg-ts-helper@1.30.3
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
@@ -15,7 +15,6 @@ import 'egg-static';
 import 'egg-jsonp';
 import 'egg-view';
 import 'egg-view-nunjucks';
-import '@egglib/statics-vite';
 import 'egg-decorator-router';
 import 'view-plugin';
 import { EggPluginItem } from 'egg';
@@ -34,7 +33,6 @@ declare module 'egg' {
     jsonp?: EggPluginItem;
     view?: EggPluginItem;
     nunjucks?: EggPluginItem;
-    '@egglib/statics'?: EggPluginItem;
     decoratorRouter?: EggPluginItem;
     sequelize?: EggPluginItem;
     'view-plugin'?: EggPluginItem;

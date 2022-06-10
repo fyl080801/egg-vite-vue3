@@ -5,7 +5,7 @@ import { Application } from 'egg';
 const startup = async (app: Application & Record<string, any>) => {
   app.addPageConfig(app.name);
 
-  app.router.get('/', app.viewInject(app.name, 'index.html'), () => {
+  app.router.get('*', app.viewInject(app.name, 'index.html'), () => {
     //
   });
 

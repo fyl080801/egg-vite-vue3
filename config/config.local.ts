@@ -1,17 +1,18 @@
 import { EggAppConfig, PowerPartial } from 'egg';
+import { EggAppInfo } from 'egg-core';
 
-export default (appInfo) => {
+export default (appInfo: EggAppInfo) => {
   const config: PowerPartial<EggAppConfig> = {};
 
   config.statics = {
     default: appInfo.name,
     clients: {
       [appInfo.name]: {
-        type: 'dev',
+        dev: true,
         configFile: 'vite.config.ts',
       },
       'view-plugin': {
-        type: 'dev',
+        dev: true,
         configFile: 'vite.config.ts',
       },
     },

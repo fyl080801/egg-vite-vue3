@@ -8,7 +8,6 @@ const plugin: EggPlugin = {
   },
   '@egglib/statics': {
     enable: true,
-    package: '@egglib/statics-vite',
   },
   decoratorRouter: {
     enable: true,

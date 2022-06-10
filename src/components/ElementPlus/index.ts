@@ -1,6 +1,6 @@
-export const ElementExtends = ({ onBeforeRender }) => {
+export const ElementExtends = ({ onBeforeBind }) => {
   // 在组件外部套一个 el-form-item
-  onBeforeRender(() => (field, next) => {
+  onBeforeBind(() => (field, next) => {
     if (!field.formProps) {
       next(field);
       return;
@@ -18,7 +18,7 @@ export const ElementExtends = ({ onBeforeRender }) => {
   }).depend('elCol');
 
   // 在组件内部套一个 el-row
-  onBeforeRender(() => (field, next) => {
+  onBeforeBind(() => (field, next) => {
     if (!field.rowProps) {
       next(field);
       return;
@@ -40,7 +40,7 @@ export const ElementExtends = ({ onBeforeRender }) => {
   });
 
   // 在组件外部套一个 el-col
-  onBeforeRender(() => (field, next) => {
+  onBeforeBind(() => (field, next) => {
     if (!field.colProps) {
       next(field);
       return;
