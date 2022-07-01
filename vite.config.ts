@@ -1,8 +1,10 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import legacy from '@vitejs/plugin-legacy';
+import { name } from './package.json';
 
 export default defineConfig({
+  base: `/${name}/`,
   build: {
     manifest: true,
   },
